@@ -1,18 +1,6 @@
-# MERN Stack Template
+# Brussels Rooftop Movie
 
-This template sets up a streamlined environment for React with TypeScript, Vite, and an Express / MongoDB backend.
-
-## Packages
-
-| Client      | Server    |
-|-------------|-----------|
-| Vite        | Express   |
-| React       | MongoDB   |
-| TypeScript  | Mongoose  |
-| ESLint      | CORS      |
-|             | Dotenv    |
-|             | TypeScript|
-|             | ESLint    |
+A website for the fictionnal cinema Brussels Rooftop Movies.
 
 ## Getting Started
 
@@ -21,20 +9,6 @@ The client and server run independently. The client connects to the backend via 
 ### ⚙️ Prerequisites
 
 Ensure you have `Node.js` and `npm` installed on your machine to run this project locally.
-
-### 🪴 Database Setup
-
-#### 1. Create the Database
-Create a MongoDB database via [MongoDB Atlas](https://www.mongodb.com/atlas), another managed cloud service, or by self-hosting the database.
-
-#### 2. Configure Environment File
-Create `/server/.env.local`.
-
-#### 3. Set Environment Variables
-Add your database's URL to `MONGO_DB_URL` in `/server/.env.local`.
-```txt
-MONGO_DB_URL = mongodb+srv://<user>:<password>@<url>:<port>/<database>
-```
 
 ### 💾 Installation
 
