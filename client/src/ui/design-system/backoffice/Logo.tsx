@@ -1,9 +1,12 @@
+// Import logo
+import logoSVG from  '../../../assets/img/logo.svg';
 // Interface pour les propriétés du composant Logo
 interface LogoProps {
     size: 'small' | 'large' ;
     className?: string;
 }
 
+// Définition logique du component
 export const Logo = ({size, className}: LogoProps) => {
     let sizeValue;
 
@@ -15,8 +18,8 @@ export const Logo = ({size, className}: LogoProps) => {
             sizeValue = "w-[143px] h-[66px]";
             break;
     }
-
+// Render du component
     return (
-        <img className={`${className} ${sizeValue}`} src={'../../../assets/img/logo.svg'} alt={'logo cinema'}/>
+        <img className={`${className} ${sizeValue}`} src={logoSVG} alt='logo cinema'/>
     )
 }
