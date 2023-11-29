@@ -12,12 +12,14 @@ import UserProfile from "./pages/UserProfile";
 import Dashboard from "./pages/backoffice/Dashboard";
 import AdminScreening from "./pages/backoffice/AdminScreening";
 import Booking from "./pages/backoffice/Booking";
+import DesignSystem from "./pages/DesignSystem";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
       <Route index element={<Home />} />
       <Route path="payment" element={<Payment />} />
+      <Route path="design-system" element={<DesignSystem />} />
       <Route path="screening" element={<Screening />} />
       <Route path="profile" element={<UserProfile />} />
       <Route path="admin/" element={<Dashboard />} />
