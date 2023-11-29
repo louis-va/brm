@@ -1,10 +1,27 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "FranklinBold";
+  src: url("./assets/fonts/FranklinBold/FranklinExtraCondGothic.woff2")
+      format("woff2"),
+    url("./assets/fonts/FranklinBold/FranklinExtraCondGothic.woff")
+      format("woff"),
+    url("./assets/fonts/FranklinBold/FranklinExtraCondGothic.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Franklin";
+  src: url("./assets/fonts/Franklin/FranklinGothicLT-Book.woff2")
+      format("woff2"),
+    url("./assets/fonts/Franklin/FranklinGothicLT-Book.woff") format("woff"),
+    url("./assets/fonts/Franklin/FranklinGothicLT-Book.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }

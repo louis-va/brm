@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'ITC Franklin Gothic LT';
+    src: url('FranklinGothicLT-Book.woff2') format('woff2'),
+        url('FranklinGothicLT-Book.woff') format('woff'),
+        url('FranklinGothicLT-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
