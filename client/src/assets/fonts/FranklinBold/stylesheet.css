@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Franklin Extra Cond. Gothic';
+    src: url('FranklinExtraCondGothic.woff2') format('woff2'),
+        url('FranklinExtraCondGothic.woff') format('woff'),
+        url('FranklinExtraCondGothic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
