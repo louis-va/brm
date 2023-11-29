@@ -19,17 +19,6 @@ git clone git@github.com:louis-va/mern-template.git
 
 #### 2. Install NPM Packages
 ```sh
-# at the root of the project
-npm install
-```
-
-#### 3. Install Client and Server NPM Packages
-```sh
-# at the root of the project
-npm run install
-```
-OR
-```sh
 cd client/
 npm install
 ```
@@ -40,19 +29,13 @@ npm install
 
 ### 🚀 Execution
 
-#### Run Client & Server
-```sh
-# at the root of the project
-npm run dev
-```
-
-#### Run Client Only
+#### Run client
 ```sh
 cd client/
 npm run dev
 ```
 
-#### Run Server Only
+#### Run server
 ```sh
 cd server/
 npm run dev
@@ -62,7 +45,11 @@ npm run dev
 
 #### Build and Run Client & Server
 ```sh
-# at the root of the project
+cd client/
+npm run build
+npm run preview
+
+cd server/
 npm run build
 npm run start
 ```
