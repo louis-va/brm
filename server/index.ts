@@ -1,8 +1,8 @@
 import express, { Express, Request, Response } from 'express';
-import { ConnectOptions } from 'mongoose'
+import { ConnectOptions } from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import database from './models/database'
+import database from './models';
 
 // ENV variables
 dotenv.config();

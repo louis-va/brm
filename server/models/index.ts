@@ -1,17 +1,17 @@
 import mongoose, { Mongoose, Model } from 'mongoose';
-import UserModel from "./user.model";
-import UserInterface from "./user.interface";
+import User from "./user.model";
+import IUser from "./user.interface";
 
 mongoose.Promise = global.Promise;
 
 interface Database {
     mongoose: Mongoose;
-    user: Model<UserInterface>;
+    user: Model<IUser>;
 }
 
 const database: Database = {
     mongoose: mongoose,
-    user: UserModel
+    user: User
 };
 
 export default database;

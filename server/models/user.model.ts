@@ -1,15 +1,15 @@
 import mongoose, { Model, Schema } from 'mongoose';
-import UserInterface from "./user.interface";
+import IUser from "./user.interface";
 
-// Define schema using Mongoose Schema
 const UserSchema = new Schema({
-  username: String,
+  firstname: String,
+  lastname: String,
   email: String,
   password: String,
   role: String
 });
 
 // Create a model with IUser interface
-const UserModel: Model<UserInterface> = mongoose.model<UserInterface>('User', UserSchema);
+const User: Model<IUser> = mongoose.model<IUser>('User', UserSchema);
 
-export default UserModel;
+export default User;
