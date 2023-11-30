@@ -1,5 +1,5 @@
 interface TypographyProps {
-  fontSize: "20" | "32" | "40" | "64" | "96";
+  fontSize: "15" | "20" | "32" | "40" | "64" | "96";
   textColor: "orange" | "black" | "white";
   fontFamily: "Franklin" | "FranklinBold";
   uppercase?: boolean;
@@ -31,6 +31,9 @@ export const Typography = ({
   const uppercaseClass = uppercase ? "uppercase" : "";
 
   switch (fontSize) {
+    case "15":
+      fontSizeClass = "text-15";
+      break;
     case "20":
       fontSizeClass = "text-20";
       break;
