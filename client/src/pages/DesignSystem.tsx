@@ -1,3 +1,4 @@
+import { BtnPlusMinus } from "../ui/design-system/BtnPlusMinus";
 import { Button } from "../ui/design-system/Button";
 import { Typography } from "../ui/design-system/Typography";
 
@@ -58,6 +59,8 @@ export default function DesignSystem() {
             Test
           </Typography>
         </Button>
+        <BtnPlusMinus plus />
+        <BtnPlusMinus />
       </div>
     </div>
   );
