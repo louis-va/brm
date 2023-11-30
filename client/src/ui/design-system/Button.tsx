@@ -2,10 +2,12 @@ interface ButtonProps {
   icon?: boolean;
   type?: "button" | "submit";
   variant?: "orange" | "black";
+  fontColor?: "white" | "black" | 'orange';
   children?: React.ReactNode;
+  className?: string;
 }
 
-export const Button = ({ icon, variant, children, type }: ButtonProps) => {
+export const Button = ({ icon, variant, children, type, className }: ButtonProps) => {
   let variantClasses;
 
   switch (variant) {
@@ -32,7 +34,7 @@ export const Button = ({ icon, variant, children, type }: ButtonProps) => {
   );
 
   return (
-    <button type={type} className={variantClasses}>
+    <button type={type} className={`${className} ${variantClasses}`}>
       {buttonContent}
     </button>
   );

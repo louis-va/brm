@@ -43,7 +43,7 @@ export default function DesignSystem() {
       </div>
 
       <div className="p-30 bg-orangePrimary rounded-25 flex gap-10">
-        <Button variant="orange">
+        <Button variant="orange" >
           <Typography fontSize="20" textColor="black" fontFamily="Franklin">
             Bouton 1
           </Typography>
