@@ -1,5 +1,5 @@
 // Import logo
-import logoSVG from  '../../../assets/img/logo.svg';
+import logoSVG from '../../assets/img/logo.svg';
 // Interface pour les propriétés du composant Logo
 interface LogoProps {
     size: 'small' | 'large' ;
