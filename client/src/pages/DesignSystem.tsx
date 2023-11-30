@@ -1,3 +1,4 @@
+import { Image } from "../ui/design-system/Image";
 import { BtnPlusMinus } from "../ui/design-system/BtnPlusMinus";
 import { Button } from "../ui/design-system/Button";
 import { Input } from "../ui/design-system/Input";
@@ -86,11 +87,26 @@ export default function DesignSystem() {
       <div className="p-30 bg-orangePrimary rounded-25 flex gap-10">
         <Tag bgColor="black">Tag 1</Tag>
         <Tag bgColor="orange">Tag 2</Tag>
-        <Tag bgColor="white">Tage 3</Tag>
-        <Tag bgColor="black" rounded={false}>Tag 4</Tag>
-        <Tag bgColor="orange" rounded={false}>Tag 4</Tag>
-        <Tag bgColor="white" rounded={false}>Tag 4</Tag>
-
+        <Tag bgColor="black" rounded={false}>
+          Tag 4
+        </Tag>
+        <Tag bgColor="orange" rounded={false}>
+          Tag 4
+        </Tag>
+        <Tag bgColor="white" rounded={false}>
+          Tag 4
+        </Tag>
+      </div>
+      <div className="p-30 bg-orangePrimary rounded-25 gap-10 w-full">
+        <Image
+          src="https://images.unsplash.com/photo-1682685794761-c8e7b2347702?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Image horizontale"
+          horizontal={true}
+        />
+        <Image
+          src="https://images.unsplash.com/photo-1699461840896-de3ae8c46de8?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="image verticale"
+        />
       </div>
     </div>
   );
