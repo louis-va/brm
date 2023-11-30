@@ -1,6 +1,7 @@
 import { BtnPlusMinus } from "../ui/design-system/BtnPlusMinus";
 import { Button } from "../ui/design-system/Button";
 import { Input } from "../ui/design-system/Input";
+import { Tag } from "../ui/design-system/Tag";
 import { Typography } from "../ui/design-system/Typography";
 
 export default function DesignSystem() {
@@ -39,6 +40,7 @@ export default function DesignSystem() {
           Texte 2
         </Typography>
       </div>
+
       <div className="p-30 bg-orangePrimary rounded-25 flex gap-10">
         <Button variant="orange">
           <Typography fontSize="20" textColor="black" fontFamily="Franklin">
@@ -63,6 +65,7 @@ export default function DesignSystem() {
         <BtnPlusMinus plus />
         <BtnPlusMinus />
       </div>
+
       <div className="p-30 bg-orangePrimary rounded-25 flex gap-10">
         <Input type="text" placeholder="John" label="Nom" />
         <Input type="text" placeholder="Doe" label="Prénom" />
@@ -78,6 +81,16 @@ export default function DesignSystem() {
           label="Mot de passe"
           variant="black"
         />
+
+
+      <div className="p-30 bg-orangePrimary rounded-25 flex gap-10">
+        <Tag bgColor="black">Tag 1</Tag>
+        <Tag bgColor="orange">Tag 2</Tag>
+        <Tag bgColor="white">Tage 3</Tag>
+        <Tag bgColor="black" rounded={false}>Tag 4</Tag>
+        <Tag bgColor="orange" rounded={false}>Tag 4</Tag>
+        <Tag bgColor="white" rounded={false}>Tag 4</Tag>
+
       </div>
     </div>
   );
