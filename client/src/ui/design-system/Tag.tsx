@@ -5,7 +5,12 @@ interface TagProps {
   children?: React.ReactNode;
 }
 
-export const Tag = ({ bgColor, rounded = true, children }: TagProps) => {
+export const Tag = ({ 
+  bgColor, 
+  rounded = true, 
+  children }: 
+  TagProps) => {
+    
   let bgColorClasses;
   let borderClasses;
 
