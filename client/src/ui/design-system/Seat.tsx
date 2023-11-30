@@ -1,24 +1,37 @@
+import { useState } from "react";
 import { FaXmark } from "react-icons/fa6";
 
 interface SeatProps {
   available?: boolean;
   selected?: boolean;
+  onClick?: () => void;
 }
 
-export const Seat = ({ selected, available = true }: SeatProps) => {
-  const defaultStyle = "w-[20px] h-[20px] rounded-[5px] cursor-pointer";
+export const Seat = ({ selected, available = true, onClick }: SeatProps) => {
+  const [isSelected, setIsSelected] = useState(selected || false);
 
+  const defaultStyle =
+    "w-[20px] h-[20px] rounded-[5px] cursor-pointer flex justify-center items-center";
+
+  const handleSeatClick = () => {
+    if (onClick) {
+      onClick(); // Appel de la fonction onClick fournie par le parent, si elle existe
+    }
+    setIsSelected((prevState) => !prevState); // Inversion de l'état isSelected
+  };
+
+  let seatStyle = defaultStyle;
   if (!available) {
-    return (
-      <div
-        className={`${defaultStyle} bg-blackPrimary flex items-center justify-center`}
-      >
-        <FaXmark className="fill-orangePrimary" size="lg" />
-      </div>
-    );
-  } else if (available && selected) {
-    return <div className={`${defaultStyle} bg-orangePrimary`}></div>;
+    seatStyle += " bg-blackPrimary";
+  } else if (available && isSelected) {
+    seatStyle += " bg-orangePrimary";
   } else {
-    return <div className={`${defaultStyle} bg-blackPrimary`}></div>;
+    seatStyle += " bg-blackPrimary";
   }
+
+  return (
+    <div className={seatStyle} onClick={handleSeatClick}>
+      {!available && <FaXmark className="fill-orangePrimary" />}
+    </div>
+  );
 };
