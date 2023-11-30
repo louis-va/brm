@@ -1,4 +1,5 @@
 import { Button } from "../ui/design-system/Button";
+import { Tag } from "../ui/design-system/Tag";
 import { Typography } from "../ui/design-system/Typography";
 
 export default function DesignSystem() {
@@ -37,6 +38,8 @@ export default function DesignSystem() {
           Texte 2
         </Typography>
       </div>
+
+      
       <div className="p-30 bg-orangePrimary rounded-25 flex gap-10">
         <Button variant="orange">
           <Typography fontSize="20" textColor="black" fontFamily="Franklin">
@@ -58,6 +61,17 @@ export default function DesignSystem() {
             Test
           </Typography>
         </Button>
+      </div>
+      
+      <div className="p-30 bg-orangePrimary rounded-25 flex gap-10">
+        <Tag variant="orange">
+          <Typography fontSize="20" textColor="black" fontFamily="Franklin">
+            Tag 1
+          </Typography>
+        </Tag>
+        <Tag variant="black">
+        </Tag>
+
       </div>
     </div>
   );
