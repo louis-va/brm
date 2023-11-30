@@ -39,7 +39,6 @@ export default function DesignSystem() {
         </Typography>
       </div>
 
-      
       <div className="p-30 bg-orangePrimary rounded-25 flex gap-10">
         <Button variant="orange">
           <Typography fontSize="20" textColor="black" fontFamily="Franklin">
@@ -62,16 +61,16 @@ export default function DesignSystem() {
           </Typography>
         </Button>
       </div>
-      
-      <div className="p-30 bg-orangePrimary rounded-25 flex gap-10">
-        <Tag variant="orange">
-          <Typography fontSize="20" textColor="black" fontFamily="Franklin">
-            Tag 1
-          </Typography>
-        </Tag>
-        <Tag variant="black">
-        </Tag>
 
+      <div className="p-30 bg-orangePrimary rounded-25 flex gap-10">
+        <Tag bgColor="black">Tag 1</Tag>
+        <Tag bgColor="orange">Tag 2</Tag>
+        <Tag bgColor="black" rounded={false}>
+          Tag 3
+        </Tag>
+        <Tag bgColor="orange" rounded={false}>
+          Tag 4
+        </Tag>
       </div>
     </div>
   );
