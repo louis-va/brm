@@ -1,6 +1,7 @@
 import { BtnPlusMinus } from "../ui/design-system/BtnPlusMinus";
 import { Button } from "../ui/design-system/Button";
 import { Input } from "../ui/design-system/Input";
+import { Seat } from "../ui/design-system/Seat";
 import { Tag } from "../ui/design-system/Tag";
 import { Typography } from "../ui/design-system/Typography";
 
@@ -96,6 +97,12 @@ export default function DesignSystem() {
         <Tag bgColor="white" rounded={false}>
           Tag 4
         </Tag>
+      </div>
+
+      <div className="p-30 bg-whitePrimary rounded-25 flex gap-10">
+        <Seat />
+        <Seat selected />
+        <Seat available={false} />
       </div>
     </div>
   );
