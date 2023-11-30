@@ -1,4 +1,4 @@
-import { Typography } from "./Typography";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 interface BtnPlusMinusProps {
   plus?: boolean;
@@ -10,15 +10,7 @@ export const BtnPlusMinus = ({ plus, className }: BtnPlusMinusProps) => {
     <button
       className={`bg-blackPrimary text-whitePrimary flex items-center justify-center w-[20px] h-[20px] rounded-full font-Franklin ${className}`}
     >
-      {plus ? (
-        <Typography fontFamily="Franklin" fontSize="20" textColor="white">
-          +
-        </Typography>
-      ) : (
-        <Typography fontFamily="Franklin" fontSize="20" textColor="white">
-          -
-        </Typography>
-      )}
+      {plus ? <FaPlus size="6px" /> : <FaMinus size="6px" />}
     </button>
   );
 };
