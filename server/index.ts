@@ -1,24 +1,40 @@
 import express, { Express, Request, Response } from 'express';
+import { ConnectOptions } from 'mongoose'
 import dotenv from 'dotenv';
 import cors from 'cors';
+import database from './models/database'
 
+// ENV variables
 dotenv.config();
+const PORT = process.env.PORT;
+const DATABASE_URL = process.env.DATABASE_URL;
 
+// Initialise express
 const app: Express = express();
-const port = process.env.PORT;
 
 // Allow requests from multiple origins
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = {
+  origin: ["http://localhost:3000"]
+};
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+// Global middleware
+app.use(cors(allowedOrigins));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Connection to the database
+database.mongoose
+  .connect(DATABASE_URL!, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  } as ConnectOptions)
+  .then(() => {
+      console.log("Successfully connect to MongoDB.");
+  })
+  .catch((err: Error) => {
+      console.error("Connection error", err);
+      process.exit(1);
+  });
 
 // GET /api/test
 app.get('/api/test', (req: Request, res: Response) => {
@@ -29,6 +45,6 @@ app.get('/api/test', (req: Request, res: Response) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`[server]: Server is running at http://localhost:${PORT}`);
 });
