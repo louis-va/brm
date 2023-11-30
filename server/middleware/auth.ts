@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv';
 import database from '../models'
-import IUser from "../models/user.interface";
 const User = database.user;
 
 // ENV variables
@@ -36,10 +35,9 @@ function verifyToken(req: AuthenticatedRequest, res: Response, next: NextFunctio
 }
 
 // is admin
-function isAdmin(req: AuthenticatedRequest, res: Response, next: NextFunction) {
-  User.findById(
-    req.userId
-  ).exec().then((user: IUser | null) => {
+async function isAdmin(req: AuthenticatedRequest, res: Response, next: NextFunction) {
+  try {
+    const user = await User.findById(req.userId).exec()
 
     if (!user || !user.role) {
       res.status(500).send({ message: "User role is missing" });
@@ -53,9 +51,10 @@ function isAdmin(req: AuthenticatedRequest, res: Response, next: NextFunction) {
       res.status(403).send({ message: "Require Admin Role!" });
       return;
     }
-  }).catch((err: Error) => {
-      res.status(500).send({ message: err.message || "Some error occurred while checking admin role." });
-  });
+
+  } catch(err: any) {
+    res.status(500).send({ message: err.message || "Some error occurred while checking admin role." });
+  }
 }
 
 const auth = {

@@ -1,24 +1,25 @@
 import { Request, Response, NextFunction } from 'express';
 import User from '../models/user.model';
-import IUser from "../models/user.interface";
 
-const USER_ROLES = ["user", "admin"]
+async function checkDuplicateEmail(req: Request, res: Response, next: NextFunction) {
+  try {
+    const existingUser = await User.findOne({ email: req.body.email }).exec()
+  
+    if (existingUser) {
+      res.status(400).send({ message: "Failed! Email is already in use!" });
+      return;
+    }
 
-function checkDuplicateEmail(req: Request, res: Response, next: NextFunction) {
-  User.findOne({
-      email: req.body.email
-  }).exec().then((user: IUser | null) => {
-      if (user) {
-          res.status(400).send({ message: "Failed! Email is already in use!" });
-          return;
-      }
-      next();
-  }).catch((err: Error) => {
-      res.status(500).send({ message: err.message || "Some error occurred while checking email duplication." });
-  });
+    next();
+
+  } catch(err: any) {
+    res.status(500).send({ message: err.message || "Some error occurred while checking email duplication." });
+  }
 }
 
 function checkExistRole (req: Request, res: Response, next: NextFunction) {
+  const USER_ROLES = ["user", "admin"]
+
   if (req.body.roles) {
     if (!USER_ROLES.includes(req.body.role)) {
       res.status(400).send({
