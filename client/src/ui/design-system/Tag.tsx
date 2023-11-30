@@ -1,22 +1,33 @@
+import React from 'react';
+
 interface TagProps {
-    variant?: "orange" | "black";
-    children?: React.ReactNode;
+  bgColor: 'orange' | 'black';
+  rounded?: boolean;
+  children?: React.ReactNode;
 }
 
-export const Tag = ({ variant, children }: TagProps) => {
-    let variantClasses;
+export const Tag = ({ bgColor, rounded = true, children }: TagProps) => {
+  let bgColorClasses;
+  let borderClasses;
 
-    switch (variant) {
-        case "orange":
-            variantClasses =
-                "bg-orangePrimary text-blackPrimary border-2 border-blackPrimary rounded-full py-[7px] px-30";
-            break;
-        case "black":
-            variantClasses =
-                "bg-blackPrimary text-orangePrimary border-2 border-blackPrimary rounded-full py-[7px] px-30";
-            break;
-    }
+  switch (bgColor) {
+    case 'orange':
+      bgColorClasses = 'bg-orangePrimary text-blackPrimary';
+      borderClasses = 'border-2 border-blackPrimary';
+      break;
+    case 'black':
+      bgColorClasses = 'bg-blackPrimary text-orangePrimary';
+      borderClasses = 'border-2 border-blackPrimary';
+      break;
+    default:
+      bgColorClasses = '';
+      borderClasses = '';
+      break;
+  }
 
-    return <div className={variantClasses}>{children}</div>;
+  const roundedClasses = rounded ? 'rounded-full' : '';
+
+  const tagClasses = `${bgColorClasses} ${borderClasses} py-1 px-3 ${roundedClasses}`;
+
+  return <div className={tagClasses}>{children}</div>;
 };
-
