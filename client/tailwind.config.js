@@ -32,6 +32,7 @@ export default {
       spacing: {
         30: "30px",
         50: "50px",
+        95: "95px"
       },
       borderRadius: {
         25: "25px",
