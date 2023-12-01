@@ -1,6 +1,6 @@
 import mongoose, { Mongoose, Model } from 'mongoose';
-import User from "./user.model";
-import IUser from "./user.interface";
+
+import { IUser, User } from "./user.model";
 
 mongoose.Promise = global.Promise;
 

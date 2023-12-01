@@ -16,9 +16,9 @@ const app: Express = express();
 const allowedOrigins = {
   origin: ["http://localhost:3000"]
 };
-
-// Global middleware
 app.use(cors(allowedOrigins));
+
+// Parse incoming requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
