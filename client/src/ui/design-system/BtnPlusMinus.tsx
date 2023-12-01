@@ -10,7 +10,7 @@ export const BtnPlusMinus = ({ plus, className }: BtnPlusMinusProps) => {
     <button
       className={`bg-blackPrimary text-whitePrimary flex items-center justify-center w-[20px] h-[20px] rounded-full font-Franklin ${className}`}
     >
-      {plus ? <FaPlus size="6px" /> : <FaMinus size="6px" />}
+      {plus ? <FaPlus size="10px" /> : <FaMinus size="10px" />}
     </button>
   );
 };
