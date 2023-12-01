@@ -10,7 +10,7 @@ export const Nav = ({
     className
 }: NavProps) => {
     return (
-        <nav className={`${className} w-full h-fit p-30 bg-orangePrimary flex flex-row justify-between items-center`}>
+        <nav className={`${className} sticky top-0 w-full h-fit p-30 bg-orangePrimary flex flex-row justify-between items-center`}>
             <Logo size={"small"} />
             <div className="flex gap-5">
                 <Button variant="black">

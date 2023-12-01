@@ -26,7 +26,7 @@ export const Header = ({
             </Typography>
             
         </div>
-        <Nav className="sticky top-0"></Nav>
+        <Nav></Nav>
       </header>
     );
 };
