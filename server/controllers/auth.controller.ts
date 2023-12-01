@@ -11,7 +11,7 @@ dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // Sign Up
-export async function signUp (req: Request, res: Response) {
+async function signUp (req: Request, res: Response) {
   try {
     const user = new User({
       firstname: req.body.username,
@@ -30,7 +30,7 @@ export async function signUp (req: Request, res: Response) {
 }
 
 // Sign In
-export async function signIn (req: Request, res: Response) {
+async function signIn (req: Request, res: Response) {
   try {
     const user = await User.findOne({ email: req.body.email }).exec()
       
@@ -73,3 +73,5 @@ export async function signIn (req: Request, res: Response) {
     return;
   }
 }
+
+export default { signUp, signIn }

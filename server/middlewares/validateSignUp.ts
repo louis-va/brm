@@ -10,9 +10,7 @@ async function checkDuplicateEmail(req: Request, res: Response, next: NextFuncti
       res.status(400).send({ message: "Failed! Email is already in use!" });
       return;
     }
-
     next();
-
   } catch(err: any) {
     res.status(500).send({ message: err.message || "Some error occurred while checking email duplication." });
   }
@@ -29,13 +27,7 @@ function checkExistRole (req: Request, res: Response, next: NextFunction) {
       return;
     }
   }
-
   next();
 }
 
-const validateSignUp = {
-  checkDuplicateEmail,
-  checkExistRole
-};
-
-export default validateSignUp;
+export default { checkDuplicateEmail, checkExistRole };

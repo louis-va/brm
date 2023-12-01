@@ -58,9 +58,4 @@ async function isAdmin(req: AuthenticatedRequest, res: Response, next: NextFunct
   }
 }
 
-const auth = {
-  verifyToken,
-  isAdmin
-};
-
-export default auth;
+export default { verifyToken, isAdmin };
