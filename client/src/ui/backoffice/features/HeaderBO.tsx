@@ -8,7 +8,7 @@ interface HeaderBOProps {
 
 export const HeaderBo = ({className}: HeaderBOProps) => {
     return (
-        <header className={`${className} w-full h-[105px] bg-orangePrimary flex flex-row flex-nowrap justify-between items-center`}>
+        <header className={`${className} w-full h-[100px] bg-orangePrimary flex flex-row flex-nowrap justify-between items-center`}>
             <Logo className={'ml-10'} size={"small"}/>
             <div className={'mr-95'}>
                 <Button icon={false} variant={'black'} type={'button'}>
