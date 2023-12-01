@@ -2,8 +2,9 @@ import {Logo} from '../../design-system/Logo.tsx'
 import {Button} from "../../design-system/Button.tsx";
 import {Typography} from "../../design-system/Typography.tsx";
 
+
 interface HeaderBOProps {
-    className?: string;
+  className?: string;
 }
 
 export const HeaderBo = ({className}: HeaderBOProps) => {
@@ -25,3 +26,4 @@ export const HeaderBo = ({className}: HeaderBOProps) => {
         </header>
     )
 }
+
