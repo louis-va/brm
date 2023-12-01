@@ -1,4 +1,4 @@
-import {Logo} from "../../design-system/backoffice/Logo";
+import {Logo} from '../../design-system/Logo.tsx'
 import {Button} from "../../design-system/Button.tsx";
 import {Typography} from "../../design-system/Typography.tsx";
 
