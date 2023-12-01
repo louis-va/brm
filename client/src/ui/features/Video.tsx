@@ -1,5 +1,4 @@
 import { Button } from "../design-system/Button";
-import { Typography } from "../design-system/Typography";
 
 export default function Video() {
   const titre = "Call me by your name";
