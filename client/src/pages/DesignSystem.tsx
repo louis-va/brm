@@ -5,10 +5,13 @@ import { Input } from "../ui/design-system/Input";
 import { Seat } from "../ui/design-system/Seat";
 import { Tag } from "../ui/design-system/Tag";
 import { Typography } from "../ui/design-system/Typography";
+import { Header } from "../ui/features/Header";
 
 export default function DesignSystem() {
   return (
-    <div className="bg-blackPrimary w-screen h-full p-30 flex flex-col gap-50">
+    <>
+    <Header></Header>
+    <div className="bg-blackPrimary w-screen h-fit p-30 flex flex-col gap-50">
       <div className="p-30 bg-orangePrimary rounded-25">
         <Typography
           fontSize="96"
@@ -120,5 +123,6 @@ export default function DesignSystem() {
       </div>
       
     </div>
+    </>
   );
 }
