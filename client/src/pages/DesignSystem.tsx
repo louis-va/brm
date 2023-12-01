@@ -9,7 +9,6 @@ import { Header } from "../ui/features/Header";
 import { MenuItem } from "../ui/design-system/MenuItems";
 import { EventCard } from "../ui/features/EventCard";
 
-
 export default function DesignSystem() {
   return (
     <>
@@ -147,6 +146,7 @@ export default function DesignSystem() {
             title={"1 place achetée\n1 place offerte"}
             tagText="TOUS LES MARDI"
           />
+        </div>
 
         <div className="p-30 bg-whitePrimary rounded-25 gap-10 w-full">
           <div className="w-1/2 border-t-2 border-blackPrimary">
@@ -155,7 +155,6 @@ export default function DesignSystem() {
             <MenuItem title="Adulte" price={10} />
             <MenuItem title="Adulte" price={10} />
           </div>
-
         </div>
       </div>
     </>
