@@ -7,6 +7,8 @@ import { Tag } from "../ui/design-system/Tag";
 import { Typography } from "../ui/design-system/Typography";
 import { Header } from "../ui/features/Header";
 import { MenuItem } from "../ui/design-system/MenuItems";
+import { EventCard } from "../ui/features/EventCard";
+
 
 export default function DesignSystem() {
   return (
@@ -121,6 +123,31 @@ export default function DesignSystem() {
             alt="image verticale"
           />
         </div>
+        <div className="flex gap-5">
+          <EventCard
+            eventType="event"
+            title={"Special Marathon \nde Noël"}
+            tagText="18/12"
+          >
+            <Typography fontFamily="Franklin" fontSize="15" textColor="black">
+              Love Actually (2003)
+            </Typography>
+            <Typography fontFamily="Franklin" fontSize="15" textColor="black">
+              Gremlins (1984)
+            </Typography>
+            <Typography fontFamily="Franklin" fontSize="15" textColor="black">
+              Tokyo Godfathers (2003)
+            </Typography>
+            <Typography fontFamily="Franklin" fontSize="15" textColor="black">
+              Klaus (2019)
+            </Typography>
+          </EventCard>
+          <EventCard
+            eventType="promo"
+            title={"1 place achetée\n1 place offerte"}
+            tagText="TOUS LES MARDI"
+          />
+
         <div className="p-30 bg-whitePrimary rounded-25 gap-10 w-full">
           <div className="w-1/2 border-t-2 border-blackPrimary">
             <MenuItem title="Adulte" price={10} />
@@ -128,6 +155,7 @@ export default function DesignSystem() {
             <MenuItem title="Adulte" price={10} />
             <MenuItem title="Adulte" price={10} />
           </div>
+
         </div>
       </div>
     </>
