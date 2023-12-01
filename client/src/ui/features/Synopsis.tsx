@@ -23,7 +23,7 @@ export default function Synopsis() {
 
   return (
     <>
-      <div className="flex flex-col bg-whitePrimary p-30 rounded-40 w-3/4 gap-5">
+      <div className="flex flex-col bg-whitePrimary p-30 rounded-40 w-full gap-5">
         <div className="flex gap-5 w-full">
           <Tag bgColor="white">{heureSceance}</Tag>
           <Tag bgColor="black">{dateSceance}</Tag>
