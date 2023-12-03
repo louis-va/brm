@@ -14,7 +14,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 async function signUp (req: Request, res: Response) {
   try {
     const user = new User({
-      firstname: req.body.username,
+      firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
