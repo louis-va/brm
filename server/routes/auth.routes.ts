@@ -17,4 +17,8 @@ router.post("/signin",
   controller.signIn
 );
 
+router.post("/signout",
+  controller.signOut
+);
+
 export default router;

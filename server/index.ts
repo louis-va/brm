@@ -2,6 +2,7 @@ import express, { Express, Request, Response, NextFunction } from 'express';
 import { ConnectOptions } from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import cookieSession from 'cookie-session';
 
 import database from './models';
 import authRoutes from './routes/auth.routes'
@@ -11,6 +12,7 @@ import userRoutes from './routes/user.routes'
 dotenv.config();
 const PORT = process.env.PORT;
 const DATABASE_URL = process.env.DATABASE_URL;
+const COOKIE_SECRET = process.env.COOKIE_SECRET;
 
 // Initialise express
 const app: Express = express();
@@ -25,11 +27,20 @@ app.use(cors(allowedOrigins));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Stores session data on the client within a cookie
+app.use(
+  cookieSession({
+    name: "brm-session",
+    keys: [COOKIE_SECRET!],
+    httpOnly: true
+  })
+);
+
 // Set response headers
 app.use(function(req: Request, res: Response, next: NextFunction) {
   res.header(
     "Access-Control-Allow-Headers",
-    "x-access-token, Origin, Content-Type, Accept"
+    "Origin, Content-Type, Accept"
   );
   next();
 });
@@ -52,7 +63,7 @@ database.mongoose
 app.use('/api/auth', authRoutes);
 app.use('/api/test', userRoutes);
 
-// Listen to port
+// Set port, listen for requests
 app.listen(PORT, () => {
   console.log(`[server]: Server is running at http://localhost:${PORT}`);
 });

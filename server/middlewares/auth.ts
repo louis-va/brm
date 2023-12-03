@@ -16,7 +16,7 @@ interface AuthenticatedRequest extends Request {
 
 // verify token
 function verifyToken(req: AuthenticatedRequest, res: Response, next: NextFunction) {
-  const token = req.headers["x-access-token"];
+  const token = req.session!.token;
 
   if (!token || !(typeof token === 'string')) {
     return res.status(401).send({

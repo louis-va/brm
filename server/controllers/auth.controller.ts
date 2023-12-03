@@ -11,7 +11,7 @@ dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // Sign Up
-async function signUp (req: Request, res: Response) {
+async function signUp(req: Request, res: Response) {
   try {
     const user = new User({
       firstname: req.body.firstname,
@@ -30,7 +30,7 @@ async function signUp (req: Request, res: Response) {
 }
 
 // Sign In
-async function signIn (req: Request, res: Response) {
+async function signIn(req: Request, res: Response) {
   try {
     const user = await User.findOne({ email: req.body.email }).exec()
       
@@ -60,13 +60,14 @@ async function signIn (req: Request, res: Response) {
       }
     );
 
+    req.session!.token = token
+
     res.status(200).send({
       id: user._id,
       firstname: user.firstname,
       lastname: user.lastname,
       email: user.email,
-      role: user.role,
-      accessToken: token
+      role: user.role
     });
   } catch(err) {
     res.status(500).send({ message: err });
@@ -74,4 +75,14 @@ async function signIn (req: Request, res: Response) {
   }
 }
 
-export default { signUp, signIn }
+// Sign Out
+async function signOut(req: Request, res: Response) {
+  try {
+    req.session = null;
+    return res.status(200).send({ message: "You've been signed out!" });
+  } catch (err) {
+    res.status(500).send({ message: err });
+  }
+}
+
+export default { signUp, signIn, signOut }
