@@ -3,7 +3,7 @@ interface TypographyProps {
   textColor: "orange" | "black" | "white";
   fontFamily: "Franklin" | "FranklinBold";
   uppercase?: boolean;
-  component?: "h1" | "h2" | "h3" | "p";
+  component?: "h1" | "h2" | "h3" | "p" | "span";
   hoverTextColor?: "orange" | "black" | "white";
   underline?: boolean;
   children?: React.ReactNode;
@@ -80,7 +80,7 @@ export const Typography = ({
 
   return (
     <Component
-      className={`${fontSizeClass} ${textColorClass} ${fontFamilyClass} ${underlineClass} ${className} ${hoverTextColorClass} ${uppercaseClass} `}
+      className={`${fontSizeClass} ${textColorClass} ${fontFamilyClass} ${underlineClass} ${className} ${hoverTextColorClass} ${uppercaseClass}`}
     >
       {children}
     </Component>
