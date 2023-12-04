@@ -9,6 +9,7 @@ import { Header } from "../ui/features/Header";
 import { MenuItem } from "../ui/design-system/MenuItems";
 import { EventCard } from "../ui/features/EventCard";
 import MovieCard from "../ui/features/movieCard";
+import { Footer } from "../ui/features/Footer";
 
 export default function DesignSystem() {
   return (
@@ -183,9 +184,9 @@ export default function DesignSystem() {
             movieTitle="Titre du Film"
             director="Nom réalistateur"
           />
-          
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }
