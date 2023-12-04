@@ -1,4 +1,4 @@
-import { Image } from "../ui/design-system/Image";
+import  Image  from "../ui/design-system/Image";
 import { BtnPlusMinus } from "../ui/design-system/BtnPlusMinus";
 import { Button } from "../ui/design-system/Button";
 import { Input } from "../ui/design-system/Input";
@@ -8,6 +8,7 @@ import { Typography } from "../ui/design-system/Typography";
 import { Header } from "../ui/features/Header";
 import { MenuItem } from "../ui/design-system/MenuItems";
 import { EventCard } from "../ui/features/EventCard";
+import MovieCard from "../ui/features/movieCard";
 
 export default function DesignSystem() {
   return (
@@ -156,6 +157,19 @@ export default function DesignSystem() {
             <MenuItem title="Adulte" price={10} />
           </div>
         </div>
+      </div>
+      <div className="flex flex-wrap">
+        <MovieCard
+          imageUrl="https://www.grignoux.be/upload/grignoux/films/1281/titane_affiche.jpeg"
+          title="Titre du Film 1"
+          director="Jean Jambon"
+        />
+        <MovieCard
+          imageUrl="https://fr.web.img2.acsta.net/pictures/18/02/13/15/35/4076138.jpg"
+          title="Titre du Film 1"
+          director="Jean Jambon"
+        />
+        {/* Répétez cette structure pour d'autres films */}
       </div>
     </>
   );
