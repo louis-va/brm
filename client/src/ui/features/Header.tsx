@@ -9,8 +9,9 @@ export const Header = ({
     className 
 }: HeaderProps) => {
     return (
+    <>
       <header
-        className={`${className} w-full h-fit bg-orangePrimary flex flex-col gap-[100px]`}
+        className={`${className} w-full h-fit bg-orangePrimary pb-[100px]`}
       >
         <div className="w-2/3 p-30">
             <Typography fontSize="96" textColor="black" fontFamily="FranklinBold" className="uppercase leading-[90px]" component="h1">
@@ -26,7 +27,9 @@ export const Header = ({
             </Typography>
             
         </div>
-        <Nav></Nav>
+        
       </header>
+      <Nav></Nav>
+    </>
     );
 };
