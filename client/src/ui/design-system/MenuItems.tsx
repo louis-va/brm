@@ -4,11 +4,12 @@ import { Typography } from "./Typography";
 interface MenuItemProps {
   title: string;
   price: number;
+  className?: string;
 }
 
 export const MenuItem = ({ title, price }: MenuItemProps) => {
   return (
-    <div className="flex justify-between border-b-2 border-blackPrimary py-2">
+    <div className="flex justify-between border-b-2 border-blackPrimary py-2 first-of-type:border-t-2">
       <div className="flex w-1/2 justify-between">
         <Typography fontSize="15" textColor="black" fontFamily="Franklin">
           {title}
