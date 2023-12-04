@@ -5,15 +5,21 @@ interface ImageProps {
   className?: string;
 }
 
-export const Image = ({
+export default function Image({
   src,
   alt,
-  horizontal = true,
   className,
-}: ImageProps) => {
+  horizontal = true,
+}: ImageProps) {
   const orientationClasses = horizontal
     ? `${className} w-full h-auto object-cover`
     : "w-auto h-full object-cover";
 
-  return <img src={src} alt={alt} className={orientationClasses} />;
-};
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={`object-cover ${className} ${orientationClasses}`}
+    />
+  );
+}

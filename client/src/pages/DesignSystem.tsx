@@ -1,4 +1,4 @@
-import { Image } from "../ui/design-system/Image";
+import Image from "../ui/design-system/Image";
 import { BtnPlusMinus } from "../ui/design-system/BtnPlusMinus";
 import { Button } from "../ui/design-system/Button";
 import { Input } from "../ui/design-system/Input";
@@ -8,6 +8,7 @@ import { Typography } from "../ui/design-system/Typography";
 import { Header } from "../ui/features/Header";
 import { MenuItem } from "../ui/design-system/MenuItems";
 import { EventCard } from "../ui/features/EventCard";
+import MovieCard from "../ui/features/movieCard";
 
 export default function DesignSystem() {
   return (
@@ -155,6 +156,34 @@ export default function DesignSystem() {
             <MenuItem title="Adulte" price={10} />
             <MenuItem title="Adulte" price={10} />
           </div>
+        </div>
+
+        <div className="flex gap-5">
+          <MovieCard
+            bgColor="orange"
+            imageUrl="https://fr.web.img2.acsta.net/pictures/18/02/13/15/35/4076138.jpg"
+            movieTitle="Titre du Film"
+            director="Nom réalistateur"
+          />
+          <MovieCard
+            bgColor="white"
+            imageUrl="https://www.grignoux.be/upload/grignoux/films/2106/augure_affiche.jpg"
+            movieTitle="Titre du Film"
+            director="Jean Jambon"
+          />
+          <MovieCard
+            bgColor="orange"
+            imageUrl="https://www.grignoux.be/upload/grignoux/films/1281/titane_affiche.jpeg"
+            movieTitle="Titre du Film"
+            director="Nom réalistateur"
+          />
+          <MovieCard
+            bgColor="white"
+            imageUrl="https://www.cinema-palace.be/sites/default/files/styles/max_popup/public/media/6706497be948bdc0eddd1d68f758da68de316d86.jpeg?itok=rnZ_oM-L"
+            movieTitle="Titre du Film"
+            director="Nom réalistateur"
+          />
+          
         </div>
       </div>
     </>
