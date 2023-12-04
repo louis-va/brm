@@ -1,18 +1,25 @@
 import mongoose, { Document, Model, Schema } from 'mongoose';
 
 interface IUser extends Document {
-  firstname: string,
-  lastname: string,
   email: string,
   password: string,
-  role: "admin" | "user";
+  firstname: string,
+  lastname: string,
+  birthdate: Date,
+  gender: "M" | "F" | "X",
+  role: "admin" | "user"
 }
 
 const UserSchema = new Schema({
-  firstname: String,
-  lastname: String,
   email: String,
   password: String,
+  firstname: String,
+  lastname: String,
+  birthdate: Date,
+  gender: {
+    type: String,
+    enum: ["M", "F", "X"]
+  },
   role: String
 });
 
