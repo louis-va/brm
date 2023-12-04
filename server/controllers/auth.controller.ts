@@ -14,10 +14,12 @@ const JWT_SECRET = process.env.JWT_SECRET;
 async function signUp(req: Request, res: Response) {
   try {
     const user = new User({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      birthdate: req.body.birthdate,
+      gender: req.body.gender,
       role: "user"
     });
 
@@ -64,9 +66,11 @@ async function signIn(req: Request, res: Response) {
 
     res.status(200).send({
       id: user._id,
+      email: user.email,
       firstname: user.firstname,
       lastname: user.lastname,
-      email: user.email,
+      birthdate: user.birthdate,
+      gender: user.gender,
       role: user.role
     });
   } catch(err) {
