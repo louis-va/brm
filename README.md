@@ -17,26 +17,37 @@ Ensure you have `Node.js` and `npm` installed on your machine to run this projec
 git clone git@github.com:louis-va/mern-template.git
 ```
 
-#### 2. Install NPM Packages
+#### 2. Install client & server dependencies
 ```sh
 cd client/
 npm install
-```
-```sh
+
 cd server/
 npm install
 ```
 
+#### 3. Add `.env` variables
+
+##### `client/.env`
+```ini
+VITE_API_URL='' # URL of the server. By default: http://localhost:8000
+```
+
+##### `server/.env`
+```ini
+PORT= # Port the server is listening at. By default 8000
+DATABASE_URL='' # URL of your mongo database
+JWT_SECRET='' # Secure string of characters. Must not be leaked
+COOKIE_SECRET='' # Secure string of characters. Must not be leaked
+```
+
 ### 🚀 Execution
 
-#### Run client
+#### Run client & server
 ```sh
 cd client/
 npm run dev
-```
 
-#### Run server
-```sh
 cd server/
 npm run dev
 ```
