@@ -1,3 +1,4 @@
+import FoodMenu from "../ui/features/FoodMenu";
 import { Header } from "../ui/features/Header";
 import Synopsis from "../ui/features/Synopsis";
 import Video from "../ui/features/Video";
@@ -10,6 +11,7 @@ export default function Screening() {
         <div className="flex flex-col gap-30 w-3/4">
           <Synopsis />
           <Video />
+          <FoodMenu />
         </div>
         <div className="w-1/4">RECAP PANIER FIXED</div>
       </div>
