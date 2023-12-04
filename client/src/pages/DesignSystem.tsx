@@ -1,4 +1,4 @@
-import  Image  from "../ui/design-system/Image";
+import Image from "../ui/design-system/Image";
 import { BtnPlusMinus } from "../ui/design-system/BtnPlusMinus";
 import { Button } from "../ui/design-system/Button";
 import { Input } from "../ui/design-system/Input";
@@ -157,19 +157,34 @@ export default function DesignSystem() {
             <MenuItem title="Adulte" price={10} />
           </div>
         </div>
-      </div>
-      <div className="flex flex-wrap">
-        <MovieCard
-          imageUrl="https://www.grignoux.be/upload/grignoux/films/1281/titane_affiche.jpeg"
-          title="Titre du Film 1"
-          director="Jean Jambon"
-        />
-        <MovieCard
-          imageUrl="https://fr.web.img2.acsta.net/pictures/18/02/13/15/35/4076138.jpg"
-          title="Titre du Film 1"
-          director="Jean Jambon"
-        />
-        {/* Répétez cette structure pour d'autres films */}
+
+        <div className="flex gap-5">
+          <MovieCard
+            bgColor="orange"
+            imageUrl="https://fr.web.img2.acsta.net/pictures/18/02/13/15/35/4076138.jpg"
+            movieTitle="Titre du Film"
+            director="Nom réalistateur"
+          />
+          <MovieCard
+            bgColor="white"
+            imageUrl="https://www.grignoux.be/upload/grignoux/films/2106/augure_affiche.jpg"
+            movieTitle="Titre du Film"
+            director="Jean Jambon"
+          />
+          <MovieCard
+            bgColor="orange"
+            imageUrl="https://www.grignoux.be/upload/grignoux/films/1281/titane_affiche.jpeg"
+            movieTitle="Titre du Film"
+            director="Nom réalistateur"
+          />
+          <MovieCard
+            bgColor="white"
+            imageUrl="https://www.cinema-palace.be/sites/default/files/styles/max_popup/public/media/6706497be948bdc0eddd1d68f758da68de316d86.jpeg?itok=rnZ_oM-L"
+            movieTitle="Titre du Film"
+            director="Nom réalistateur"
+          />
+          
+        </div>
       </div>
     </>
   );
