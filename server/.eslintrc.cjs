@@ -7,4 +7,7 @@ module.exports = {
     node: true
   },
   ignorePatterns: ['dist', '.eslintrc.cjs'],
+  rules: {
+    "@typescript-eslint/no-explicit-any": "off"
+  }
 };

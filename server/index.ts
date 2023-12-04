@@ -1,34 +1,69 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, Request, Response, NextFunction } from 'express';
+import { ConnectOptions } from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import cookieSession from 'cookie-session';
 
+import database from './models';
+import authRoutes from './routes/auth.routes'
+import userRoutes from './routes/user.routes'
+
+// ENV variables
 dotenv.config();
+const PORT = process.env.PORT;
+const DATABASE_URL = process.env.DATABASE_URL;
+const COOKIE_SECRET = process.env.COOKIE_SECRET;
 
+// Initialise express
 const app: Express = express();
-const port = process.env.PORT;
 
 // Allow requests from multiple origins
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = {
+  origin: ["http://localhost:3000"]
+};
+app.use(cors(allowedOrigins));
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+// Parse incoming requests
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// GET /api/test
-app.get('/api/test', (req: Request, res: Response) => {
-  return res.status(200).json({
-    status: "success",
-    data: "Connected to the server.",
-    message: "Data retrieved successfully"
-  });
+// Stores session data on the client within a cookie
+app.use(
+  cookieSession({
+    name: "brm-session",
+    keys: [COOKIE_SECRET!],
+    httpOnly: true
+  })
+);
+
+// Set response headers
+app.use(function(req: Request, res: Response, next: NextFunction) {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, Content-Type, Accept"
+  );
+  next();
 });
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+// Connection to the database
+database.mongoose
+  .connect(DATABASE_URL!, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  } as ConnectOptions)
+  .then(() => {
+      console.log("Successfully connect to MongoDB.");
+  })
+  .catch((err: Error) => {
+      console.error("Connection error", err);
+      process.exit(1);
+  });
+
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/test', userRoutes);
+
+// Set port, listen for requests
+app.listen(PORT, () => {
+  console.log(`[server]: Server is running at http://localhost:${PORT}`);
 });
