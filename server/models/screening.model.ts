@@ -1,37 +1,37 @@
 import mongoose, { Document, Model, Schema } from 'mongoose';
 
+interface IMovie {
+  title: string,
+  director: string,
+  casting: string[],
+  genres: string[],
+  synopsis: string,
+  poster: string,
+  trailer: string,
+  score: string,
+  length: string,
+  release: Date
+}
+
 interface IScreening extends Document {
-  movie: {
-    title: string,
-    director: string,
-    casting: Array<string>,
-    genres: Array<string>,
-    synopsis: string,
-    poster: string,
-    trailer: string,
-    score: string,
-    length: string,
-    release: Date
-  },
-  date: Date,
-  seats: Array<string>
+  movie: IMovie
+  date: Date
 }
 
 const ScreeningSchema = new Schema({
   movie: {
     title: String,
     director: String,
-    casting: Array,
-    genres: Array,
+    casting: [String],
+    genres: [String],
     synopsis: String,
     poster: String,
     trailer: String,
     score: String,
     length: String,
-    release: String
+    release: Date
   },
-  date: Date,
-  seats: Array
+  date: Date
 });
 
 const Screening: Model<IScreening> = mongoose.model<IScreening>('Screening', ScreeningSchema);
