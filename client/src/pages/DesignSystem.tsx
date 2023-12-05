@@ -160,30 +160,10 @@ export default function DesignSystem() {
         </div>
 
         <div className="flex gap-5">
-          <MovieCard
-            bgColor="orange"
-            imageUrl="https://fr.web.img2.acsta.net/pictures/18/02/13/15/35/4076138.jpg"
-            movieTitle="Titre du Film"
-            director="Nom réalistateur"
-          />
-          <MovieCard
-            bgColor="white"
-            imageUrl="https://www.grignoux.be/upload/grignoux/films/2106/augure_affiche.jpg"
-            movieTitle="Titre du Film"
-            director="Jean Jambon"
-          />
-          <MovieCard
-            bgColor="orange"
-            imageUrl="https://www.grignoux.be/upload/grignoux/films/1281/titane_affiche.jpeg"
-            movieTitle="Titre du Film"
-            director="Nom réalistateur"
-          />
-          <MovieCard
-            bgColor="white"
-            imageUrl="https://www.cinema-palace.be/sites/default/files/styles/max_popup/public/media/6706497be948bdc0eddd1d68f758da68de316d86.jpeg?itok=rnZ_oM-L"
-            movieTitle="Titre du Film"
-            director="Nom réalistateur"
-          />
+          <MovieCard bgColor="orange" />
+          <MovieCard bgColor="white" />
+          <MovieCard bgColor="orange" />
+          <MovieCard bgColor="white" />
         </div>
       </div>
       <Footer></Footer>

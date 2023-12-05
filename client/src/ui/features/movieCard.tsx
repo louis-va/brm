@@ -4,17 +4,9 @@ import { Tag } from "../design-system/Tag";
 
 interface MovieCardProps {
   bgColor?: string;
-  imageUrl: string;
-  movieTitle: string;
-  director: string;
 }
 
-export default function MovieCard({
-  bgColor,
-  imageUrl,
-  movieTitle,
-  director,
-}: MovieCardProps) {
+export default function MovieCard({ bgColor }: MovieCardProps) {
   let bgColorClasses;
   let tagBgColor;
 
@@ -32,6 +24,20 @@ export default function MovieCard({
       break;
   }
 
+  const movieData = {
+    title: "Call Me By Your Name",
+    director: "Luca Guadagnino",
+    dateShow: "27/12",
+    hourShow: "21:15",
+    imgUrl:
+      "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT4yhbrgOZqmfO7dIp2iO_uoP22H4G7tp2fa6M23zEKGKg7vymr",
+  };
+
+  const movieTitle = movieData.title;
+  const director = movieData.director;
+  const dateShow = movieData.dateShow;
+  const hourShow = movieData.hourShow;
+  const imgUrl = movieData.imgUrl;
 
   return (
     <div className="w-1/4">
@@ -39,41 +45,41 @@ export default function MovieCard({
         className={`${bgColorClasses} rounded-25 overflow-hidden relative pb-[150%]`}
       >
         <Image
-          src={imageUrl}
+          src={imgUrl}
           alt={movieTitle}
           className="absolute inset-0 w-full h-full"
         />
       </div>
-      <div className={`${bgColorClasses} p-[15px] rounded-25 flex flex-col gap-6`}>
+      <div
+        className={`${bgColorClasses} p-[15px] rounded-25 flex flex-col gap-6`}
+      >
         <div>
-            <Typography
+          <Typography
             fontSize="32"
             textColor="black"
             fontFamily="FranklinBold"
             uppercase
             className="text-center"
             component="h2"
-
-            >
+          >
             {movieTitle}
-            </Typography>
-            <Typography
+          </Typography>
+          <Typography
             fontSize="20"
             textColor="black"
             fontFamily="FranklinBold"
             uppercase
             className="text-center"
             component="h3"
-            >
+          >
             {director}
-            </Typography>
+          </Typography>
         </div>
         <div className="flex justify-between">
-            <Tag bgColor="black">27/12</Tag>
-            <Tag bgColor= {`${tagBgColor}`}>21:15</Tag>
+          <Tag bgColor="black">{dateShow}</Tag>
+          <Tag bgColor={`${tagBgColor}`}>{hourShow}</Tag>
         </div>
       </div>
-
     </div>
   );
 }
