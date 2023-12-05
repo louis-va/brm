@@ -2,6 +2,7 @@ import express from 'express';
 
 import validateSignUp from '../middlewares/validateSignUp';
 import controller from '../controllers/auth.controller'
+import auth from '../middlewares/verifyAuth'
 
 const router = express.Router();
 
@@ -19,6 +20,11 @@ router.post("/signin",
 
 router.post("/signout",
   controller.signOut
+);
+
+router.post("/refresh",
+  [auth.verifyToken],
+  controller.refresh
 );
 
 export default router;
