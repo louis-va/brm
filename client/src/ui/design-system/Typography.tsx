@@ -53,16 +53,16 @@ export const Typography = ({
 
   switch (textColor) {
     case "orange":
-      textColorClass = "text-orange";
+      textColorClass = "text-orangePrimary";
       break;
     case "black":
-      textColorClass = "text-black";
+      textColorClass = "text-blackPrimary";
       break;
     case "white":
-      textColorClass = "text-white";
+      textColorClass = "text-whitePrimary";
       break;
     default:
-      textColorClass = "text-black";
+      textColorClass = "text-blackPrimary";
       break;
   }
 

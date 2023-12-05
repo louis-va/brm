@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomLink from './customLink.tsx';
+import CustomLink from './CustomLink.tsx';
 import {Typography} from '../../design-system/Typography.tsx';
 
 interface ListProps {
