@@ -3,15 +3,17 @@ interface ButtonProps {
   type?: "button" | "submit";
   variant: "orange" | "black";
   fontColor?: "white" | "black" | "orange";
+  borderNone?: boolean;
   children?: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
-
 export const Button = ({
   icon,
-  variant,
-  children,
   type,
+  variant,
+  borderNone,
+  children,
   className,
 }: ButtonProps) => {
   let variantClasses;
@@ -19,13 +21,15 @@ export const Button = ({
   switch (variant) {
     case "orange":
       variantClasses =
-        "bg-orangePrimary text-blackPrimary border-2 border-blackPrimary rounded-full py-[7px] px-30";
+        "bg-orangePrimary text-blackPrimary rounded-full py-[7px] px-30";
       break;
     case "black":
       variantClasses =
-        "bg-blackPrimary text-orangePrimary border-2 border-blackPrimary rounded-full py-[7px] px-30";
+        "bg-blackPrimary text-orangePrimary rounded-full py-[7px] px-30";
       break;
   }
+
+  const borderClass = borderNone ? "border-0" : "border-2 border-blackPrimary";
 
   const buttonContent = (
     <div className="flex items-center gap-2">
@@ -40,7 +44,10 @@ export const Button = ({
   );
 
   return (
-    <button type={type} className={`${className} ${variantClasses}`}>
+    <button
+      type={type}
+      className={`${className} ${variantClasses} ${borderClass}`}
+    >
       {buttonContent}
     </button>
   );

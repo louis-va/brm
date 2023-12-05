@@ -10,6 +10,7 @@ import { MenuItem } from "../ui/design-system/MenuItems";
 import { EventCard } from "../ui/features/EventCard";
 import MovieCard from "../ui/features/movieCard";
 import { Footer } from "../ui/features/Footer";
+import { Auth } from "../ui/features/Auth";
 
 export default function DesignSystem() {
   return (
@@ -164,6 +165,10 @@ export default function DesignSystem() {
           <MovieCard bgColor="white" />
           <MovieCard bgColor="orange" />
           <MovieCard bgColor="white" />
+        </div>
+
+        <div className="bg-blackPrimary rounded-25">
+          <Auth bgColor="orange"></Auth>
         </div>
       </div>
       <Footer></Footer>

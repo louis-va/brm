@@ -1,6 +1,5 @@
 import { Input } from "../design-system/Input.tsx";
 import { Typography } from "../design-system/Typography.tsx";
-import { Nav } from "./Nav.tsx";
 import { Logo } from "../design-system/Logo.tsx";
 
 interface FooterProps {
