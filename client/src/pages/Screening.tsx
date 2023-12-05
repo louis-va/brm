@@ -1,5 +1,6 @@
 import FoodMenu from "../ui/features/FoodMenu";
 import { Header } from "../ui/features/Header";
+import ResaRecap from "../ui/features/ResaRecap";
 import Synopsis from "../ui/features/Synopsis";
 import Video from "../ui/features/Video";
 
@@ -13,7 +14,9 @@ export default function Screening() {
           <Video />
           <FoodMenu />
         </div>
-        <div className="w-1/4">RECAP PANIER FIXED</div>
+        <div className="w-1/4 bg-orangePrimary p-30 rounded-40 h-fit sticky top-36">
+          <ResaRecap />
+        </div>
       </div>
     </div>
   );
