@@ -3,7 +3,7 @@ interface TypographyProps {
   textColor: "orange" | "black" | "white";
   fontFamily: "Franklin" | "FranklinBold";
   uppercase?: boolean;
-  component?: "h1" | "h2" | "h3" | "p" | "span";
+  component?: "h1" | "h2" | "h3" | "p" | "span" ;
   hoverTextColor?: "orange" | "black" | "white";
   underline?: boolean;
   children?: React.ReactNode;

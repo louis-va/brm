@@ -3,7 +3,7 @@ import { useState } from "react";
 
 interface InputProps {
   type: "text" | "password" | "email";
-  variant?: "orange" | "black";
+  variant?: "orange" | "black" | "white";
   label: string;
   placeholder: string;
   value?: string;
@@ -48,6 +48,22 @@ export const Input = ({
             placeholder={placeholder}
             value={value}
             className={`py-[7px] px-[30px] rounded-full border border-orangePrimary text-orangePrimary bg-blackPrimary placeholder:text-orangePrimary placeholder:opacity-30 focus:outline-none focus:border-whitePrimary ${className}`}
+          />
+        </div>
+      );
+      case "white":
+      return (
+        <div className="flex flex-col gap-2">
+          <label className="ml-[30px]">
+            <Typography fontSize="20" textColor="black" fontFamily="Franklin">
+              {label}
+            </Typography>
+          </label>
+          <input
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            className="py-[7px] px-[30px] rounded-full border border-blackPrimary text-blackPrimary bg-whitePrimary placeholder:text-blackPrimary placeholder:opacity-30 focus:outline-none focus:border-orangePrimary"
           />
         </div>
       );
