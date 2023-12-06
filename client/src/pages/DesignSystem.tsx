@@ -8,8 +8,8 @@ import { Typography } from "../ui/design-system/Typography";
 import { Header } from "../ui/features/Header";
 import { MenuItem } from "../ui/design-system/MenuItems";
 import { EventCard } from "../ui/features/EventCard";
-import MovieCard from "../ui/features/movieCard";
 import { Footer } from "../ui/features/Footer";
+import MovieCard from "../ui/features/movieCard";
 import { Auth } from "../ui/features/Auth";
 
 export default function DesignSystem() {
