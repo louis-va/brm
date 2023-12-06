@@ -45,7 +45,7 @@ async function isAdmin(req: AuthenticatedRequest, res: Response, next: NextFunct
     const user = await User.findById(req.userId).exec()
 
     if (!user || !user.role) {
-      res.status(500).send({ message: "User role is missing" });
+      res.status(403).send({ message: "User role is missing" });
       return;
     }
 
