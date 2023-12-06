@@ -1,6 +1,6 @@
 import express from 'express';
 
-import validateSignUp from '../middlewares/validateSignUp';
+import validateSignUp from '../middlewares/verifySignUp';
 import controller from '../controllers/auth.controller'
 import auth from '../middlewares/verifyAuth'
 

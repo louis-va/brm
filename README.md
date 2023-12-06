@@ -37,8 +37,9 @@ VITE_API_URL='' # URL of the server. By default: http://localhost:8000
 ```ini
 PORT= # Port the server is listening at. By default 8000
 DATABASE_URL='' # URL of your mongo database
-JWT_SECRET='' # Secure string of characters. Must not be leaked
-COOKIE_SECRET='' # Secure string of characters. Must not be leaked
+JWT_SECRET='' # Secure string of characters.
+COOKIE_SECRET='' # Secure string of characters.
+TMBD_API_KEY='' # TMDB API Key. https://www.themoviedb.org/settings/api
 ```
 
 ### 🚀 Execution
