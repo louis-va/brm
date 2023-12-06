@@ -1,6 +1,7 @@
 import { Button } from "../design-system/Button";
 import { Typography } from "../design-system/Typography";
 import { Input } from "../design-system/Input";
+import { Select } from "../design-system/Select";
 import { useState } from "react";
 
 interface AuthProps {
@@ -8,6 +9,12 @@ interface AuthProps {
   className?: string;
   children?: React.ReactNode;
 }
+
+const options = [
+  { value: "homme", label: "Homme" },
+  { value: "femme", label: "Femme" },
+  { value: "autre", label: "Autre" },
+];
 
 const tabsData = [
   {
@@ -30,9 +37,23 @@ const tabsData = [
             />
           </div>
         </div>
-        <div>
+        <div className="flex justify-between items-end">
+          <a href="">
+            <Typography
+              fontSize="15"
+              textColor="black"
+              fontFamily="Franklin"
+              component="p"
+              underline
+            >
+              Mot de passe oublié ?
+            </Typography>
+          </a>
           <Button variant="black">
-            <Typography fontSize="20" textColor="orange" fontFamily="Franklin">
+            <Typography 
+            fontSize="20" 
+            textColor="orange" 
+            fontFamily="Franklin">
               Se connecter
             </Typography>
           </Button>
@@ -45,41 +66,58 @@ const tabsData = [
     content: (
       <div className="flex flex-col gap-10">
         <div className="grid grid-cols-2 gap-4">
-          <Input type="text" placeholder="Nom" label="Nom" />
-          <Input type="text" placeholder="Prénom" label="Prénom" />
+          <Input type="text" placeholder="Nom" label="Nom" variant="white" />
+          <Input type="text" placeholder="Prénom" label="Prénom" variant="white" />
           <Input
             type="email"
             placeholder="Adresse email"
             label="Adresse email"
+            variant="white"
           />
-          <Input type="text" placeholder="Genre" label="Genre" />
+          <Select label="Genre" variant="white" options={options} />
           <Input
             type="password"
             placeholder="Mot de passe"
             label="Mot de passe"
+            variant="white"
           />
           <Input
             type="email"
             placeholder="Confirmation adresse email"
             label="Confirmation mot de passe"
+            variant="white"
           />
         </div>
-        <Button variant="black" className="w-fit">
-          <Typography fontSize="20" textColor="orange" fontFamily="Franklin">
-            S'inscrire
+        <div className="flex justify-between items-end">
+          <Typography
+            fontSize="15"
+            textColor="black"
+            fontFamily="Franklin"
+            className="w-2/3"
+          >
+            Le mot de passe doit contenir au moins 8 caractères, une majuscule,
+            une minuscule et un chiffre.
           </Typography>
-        </Button>
+          <Button variant="black" className="w-fit">
+            <Typography 
+            fontSize="20" 
+            textColor="white" 
+            fontFamily="Franklin">
+              S'inscrire
+            </Typography>
+          </Button>
+        </div>
       </div>
     ),
   },
 ];
-
 export const Auth = ({ bgColor, className, children }: AuthProps) => {
   const [selectedTab, setSelectedTab] = useState(0);
+  const [bgColorState, setBgColor] = useState<"orange" | "white">(bgColor);
 
   let bgColorClasses;
 
-  switch (bgColor) {
+  switch (bgColorState) {
     case "orange":
       bgColorClasses = "bg-orangePrimary text-blackPrimary";
       break;
@@ -95,12 +133,21 @@ export const Auth = ({ bgColor, className, children }: AuthProps) => {
     <div
       className={`${bgColorClasses} ${className} w-3/4 h-auto rounded-25 p-30 flex flex-col gap-10`}
     >
-      <div className="flex">
+      <div className="flex justify-center">
         {tabsData.map((obj, index) => (
           <button
             key={index}
-            onClick={() => setSelectedTab(index)}
-            className={`m-auto ${selectedTab === index ? "underline" : ""}`}
+            onClick={() => {
+              setSelectedTab(index);
+              if (tabsData[index].buttonContent === "S'inscrire") {
+                setBgColor("white");
+              } else {
+                setBgColor("orange");
+              }
+            }}
+            className={`p-2 ${
+              selectedTab === index ? "underline" : ""
+            }`}
           >
             <Typography
               fontSize="40"
