@@ -16,7 +16,7 @@ interface IMovie {
 
 interface IScreening extends Document {
   movie: IMovie,
-  date: Date
+  date: Date,
   seats: string[]
 }
 
