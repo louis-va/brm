@@ -39,7 +39,7 @@ PORT= # Port the server is listening at. By default 8000
 DATABASE_URL='' # URL of your mongo database
 JWT_SECRET='' # Secure string of characters.
 COOKIE_SECRET='' # Secure string of characters.
-TMBD_API_KEY='' # TMDB API Key. https://www.themoviedb.org/settings/api
+TMDB_API_KEY='' # TMDB API Key. https://www.themoviedb.org/settings/api
 ```
 
 ### 🚀 Execution
