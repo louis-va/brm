@@ -16,23 +16,27 @@ interface AuthenticatedRequest extends Request {
 
 // verify token
 function verifyToken(req: AuthenticatedRequest, res: Response, next: NextFunction) {
-  const token = req.session!.token;
+  try {
+    const token = req.session!.token;
 
-  if (!token || !(typeof token === 'string')) {
-    return res.status(401).send({
-      message: "Unauthorized!",
-    });
-  }
-
-  jwt.verify(token, JWT_SECRET!, (err: jwt.VerifyErrors | null, decoded: any) => {
-    if (err || !decoded || !decoded.id) {
+    if (!token || !(typeof token === 'string')) {
       return res.status(401).send({
-        message: "Unauthorized!",
+        message: "The token is missing",
       });
     }
-    req.userId = decoded.id;
-    next();
-  });
+
+    jwt.verify(token, JWT_SECRET!, (err: jwt.VerifyErrors | null, decoded: any) => {
+      if (err || !decoded || !decoded.id) {
+        return res.status(401).send({
+          message: "The token has expired",
+        });
+      }
+      req.userId = decoded.id;
+      next();
+    });
+  } catch(err: any) {
+    res.status(500).send({ message: err.message || "Some error occurred during the token verification." });
+  }
 }
 
 // is admin

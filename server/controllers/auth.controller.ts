@@ -10,6 +10,11 @@ const User = database.user;
 dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
+// Types
+interface AuthenticatedRequest extends Request {
+  userId?: string;
+}
+
 // Sign Up
 async function signUp(req: Request, res: Response) {
   try {
@@ -89,4 +94,28 @@ async function signOut(req: Request, res: Response) {
   }
 }
 
-export default { signUp, signIn, signOut }
+// Refresh
+async function refresh(req: AuthenticatedRequest, res: Response) {
+  try {
+    const user = await User.findById(req.userId).exec()
+
+    if (!user) {
+      res.status(500).send({ message: "User not found" });
+      return;
+    }
+
+    res.status(200).send({
+      id: user._id,
+      email: user.email,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      birthdate: user.birthdate,
+      gender: user.gender,
+      role: user.role
+    });
+  } catch (err) {
+    res.status(500).send({ message: err });
+  }
+}
+
+export default { signUp, signIn, signOut, refresh }
