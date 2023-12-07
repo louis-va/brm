@@ -8,7 +8,7 @@ const Screening = database.screening;
 dotenv.config();
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 
-// Get movie info
+// Get movie info from TMDB API
 async function getMovieInfo(movieId: string): Promise<any> {
   const url = `https://api.themoviedb.org/3/movie/${movieId}?language=fr-FR`;
   const options = {
@@ -33,7 +33,7 @@ async function getMovieInfo(movieId: string): Promise<any> {
   }
 }
 
-// Get casting
+// Get casting from TMDB API
 async function getCasting(movieId: string): Promise<any> {
   const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=fr-FR`;
   const options = {
@@ -69,11 +69,11 @@ async function addScreening(req: Request, res: Response) {
       movie: {
         title: movieInfo.title,
         director: casting.crew
-          .filter((member: any) => member.job === "Director")
-          .map((director: any) => director.name),
+          .filter((member: any) => member.job === "Director") // filter the array to have only members with the director job
+          .map((director: any) => director.name), // returns only the name of the crew member
         casting: casting.cast
-          .slice(0, 5)
-          .map((member: any) => member.name),
+          .slice(0, 5) // returns only the 5 first cast members
+          .map((member: any) => member.name), // returns only the name of the cast member
         genres: movieInfo.genres.map((genre: any) => genre.name),
         synopsis: movieInfo.overview,
         poster: `https://image.tmdb.org/t/p/w300${movieInfo.poster_path}`,
@@ -132,4 +132,18 @@ async function getGenres(req: Request, res: Response) {
   }
 }
 
-export default { addScreening, getAllScreenings, getOneScreening, getGenres }
+// Get the dates of the upcoming movies
+async function getDates(req: Request, res: Response) {
+  try {
+    const rawDates = await Screening.distinct('date')
+
+    // filter the array of dates to have only unique dates without times 
+    const dates = Array.from(new Set(rawDates.map(date => new Date(date).toISOString().split('T')[0])));
+
+    res.status(200).send({ dates });
+  } catch (err: any) {
+    res.status(500).send({ message: err });
+  }
+}
+
+export default { addScreening, getAllScreenings, getOneScreening, getGenres, getDates }

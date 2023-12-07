@@ -23,6 +23,10 @@ router.get("/genres",
   controller.getGenres
 );
 
+router.get("/dates",
+  controller.getDates
+);
+
 router.get("/:id",
   controller.getOneScreening
 );
