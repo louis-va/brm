@@ -8,7 +8,8 @@ interface TagProps {
 export const Tag = ({ 
   bgColor, 
   rounded = true, 
-  children 
+  children,
+    className
 }: TagProps) => {
   let bgColorClasses;
   let borderClasses;
@@ -36,5 +37,5 @@ export const Tag = ({
 
   const tagClasses = `${bgColorClasses} ${borderClasses} py-1 px-3 h-fit w-fit ${roundedClasses}`;
 
-  return <div className={tagClasses}>{children}</div>;
+  return <div className={`${className} ${tagClasses}`}>{children}</div>;
 };

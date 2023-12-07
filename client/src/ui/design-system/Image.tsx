@@ -12,14 +12,14 @@ export default function Image({
   horizontal = true,
 }: ImageProps) {
   const orientationClasses = horizontal
-    ? `${className} w-full h-auto object-cover`
-    : "w-auto h-full object-cover";
+    ? `${className} w-full h-auto`
+    : "w-auto h-full";
 
   return (
     <img
       src={src}
       alt={alt}
-      className={`object-cover ${className} ${orientationClasses}`}
+      className={`${className} ${orientationClasses}`}
     />
   );
 }

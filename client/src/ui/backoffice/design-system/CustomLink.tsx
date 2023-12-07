@@ -11,7 +11,7 @@ const CustomLink = ({ to, className, children }: LinkProps) => {
     const isActive = location.pathname === to;
     const linkClasses = `
     ${className}
-    ${isActive ? 'text-orange-500 font-bold relative' : 'text-black'}
+    ${isActive ? 'text-orange-500 font-bold' : 'text-black'}
   `;
 
     const bulletClasses = `
