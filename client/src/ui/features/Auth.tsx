@@ -131,7 +131,7 @@ export const Auth = ({ bgColor, className, children }: AuthProps) => {
 
   return (
     <div
-      className={`${bgColorClasses} ${className} w-3/4 h-auto rounded-25 p-30 flex flex-col gap-10`}
+      className={`${bgColorClasses} ${className} h-auto rounded-25 p-30 flex flex-col gap-10`}
     >
       <div className="flex justify-center">
         {tabsData.map((obj, index) => (

@@ -1,8 +1,8 @@
 import { Typography } from "./Typography";
-import { useState } from "react";
+//import { useState } from "react";
 
 interface InputProps {
-  type: "text" | "password" | "email";
+  type: "text" | "password" | "email" | "number" | "date";
   variant?: "orange" | "black" | "white";
   label: string;
   placeholder: string;

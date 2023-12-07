@@ -40,7 +40,7 @@ export default function MovieCard({ bgColor }: MovieCardProps) {
   const imgUrl = movieData.imgUrl;
 
   return (
-    <div className="w-1/4">
+    <div className="">
       <div
         className={`${bgColorClasses} rounded-25 overflow-hidden relative pb-[150%]`}
       >

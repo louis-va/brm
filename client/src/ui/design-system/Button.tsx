@@ -16,6 +16,7 @@ export const Button = ({
   children,
   className,
 }: ButtonProps) => {
+  
   let variantClasses;
 
   switch (variant) {
