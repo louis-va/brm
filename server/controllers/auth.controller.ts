@@ -39,7 +39,7 @@ async function signUp(req: Request, res: Response) {
 // Sign In
 async function signIn(req: Request, res: Response) {
   try {
-    const user = await User.findOne({ email: req.body.email }).exec()
+    const user = await User.findOne({ email: req.body.email })
       
     if (!user) {
       return res.status(404).send({ message: "User Not found." });
@@ -97,7 +97,7 @@ async function signOut(req: Request, res: Response) {
 // Refresh
 async function refresh(req: AuthenticatedRequest, res: Response) {
   try {
-    const user = await User.findById(req.userId).exec()
+    const user = await User.findById(req.userId)
 
     if (!user) {
       res.status(500).send({ message: "User not found" });
