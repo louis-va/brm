@@ -15,7 +15,6 @@ export default function Payment() {
           <div className="flex flex-col gap-30 ">
           <PaymentMethod title="creditCard" bgColor="white"></PaymentMethod>
           <PaymentMethod title="amazonPay" bgColor="white"></PaymentMethod>
-          <PaymentMethod title="googlePay" bgColor="white"></PaymentMethod>
           <PaymentMethod title="applePay" bgColor="white"></PaymentMethod>
           <PaymentMethod title="paypal" bgColor="white"></PaymentMethod>
           

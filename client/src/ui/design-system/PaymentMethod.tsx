@@ -1,6 +1,5 @@
 import { Typography } from "./Typography";
 import {
-  FaGooglePay,
   FaCcAmazonPay,
   FaCcApplePay,
   FaCcPaypal,
@@ -8,7 +7,7 @@ import {
 } from "react-icons/fa6";
 
 interface PaymentMethodProps {
-  title: "creditCard" | "amazonPay" | "googlePay" | "applePay" | "paypal";
+  title: "creditCard" | "amazonPay" | "applePay" | "paypal";
   bgColor?: "orange" | "white";
   className?: string;
   children?: React.ReactNode;
@@ -25,27 +24,24 @@ export const PaymentMethod = ({
 
   let logoContent: React.ReactNode = null;
   let titleContent = "";
+  let sizeLogo = 40
 
   switch (title) {
     case "creditCard":
       titleContent = "Carte de crédit ";
-      logoContent = <FaCcVisa />;
+      logoContent = <FaCcVisa size={sizeLogo} />;
       break;
     case "amazonPay":
       titleContent = "Amazon Pay";
-      logoContent = <FaCcAmazonPay />;
-      break;
-    case "googlePay":
-      titleContent = "Google Pay";
-      logoContent = <FaGooglePay />;
+      logoContent = <FaCcAmazonPay size={sizeLogo} />;
       break;
     case "applePay":
       titleContent = "Apple Pay";
-      logoContent = <FaCcApplePay />;
+      logoContent = <FaCcApplePay size={sizeLogo} />;
       break;
     case "paypal":
       titleContent = "Paypal";
-      logoContent = <FaCcPaypal />;
+      logoContent = <FaCcPaypal size={sizeLogo} />;
       break;
     default:
       titleContent = "Méthode de paiement inconnue";
@@ -60,7 +56,7 @@ export const PaymentMethod = ({
     <div className={combinedClassName}>
       <div className="flex justify-between w-full">
         <div className="flex items-center gap-2">
-          <div className="bg-blackPrimary w-[17px] h-[17px] rounded-full"></div>
+          <div className="bg-whitePrimary w-[17px] h-[17px] rounded-full border border-blackPrimary"></div>
           <Typography fontSize="20" fontFamily="Franklin" textColor="black">
             {titleContent}
           </Typography>
