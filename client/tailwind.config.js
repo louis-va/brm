@@ -15,6 +15,7 @@ export default {
         blackLighter: "#0F0F0F",
       },
       fontSize: {
+        12: "12px",
         20: "20px",
         32: "32px",
         40: "40px",
