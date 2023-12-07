@@ -21,7 +21,7 @@ export const Input = ({
   switch (variant) {
     case "orange":
       return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 w-full">
           <label className="ml-[30px]">
             <Typography fontSize="20" textColor="black" fontFamily="Franklin">
               {label}
@@ -51,7 +51,7 @@ export const Input = ({
           />
         </div>
       );
-      case "white":
+    case "white":
       return (
         <div className="flex flex-col gap-2">
           <label className="ml-[30px]">
