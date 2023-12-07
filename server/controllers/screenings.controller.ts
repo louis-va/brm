@@ -121,4 +121,15 @@ async function getOneScreening(req: Request, res: Response) {
   }
 }
 
-export default { addScreening, getAllScreenings, getOneScreening }
+// Get the genres of the upcoming movies
+async function getGenres(req: Request, res: Response) {
+  try {
+    const genres = await Screening.distinct('movie.genres')
+
+    res.status(200).send({ genres });
+  } catch (err: any) {
+    res.status(500).send({ message: err });
+  }
+}
+
+export default { addScreening, getAllScreenings, getOneScreening, getGenres }
