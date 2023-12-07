@@ -19,4 +19,8 @@ router.get("/",
   controller.getAllScreenings
 );
 
+router.get("/:id",
+  controller.getOneScreening
+);
+
 export default router;

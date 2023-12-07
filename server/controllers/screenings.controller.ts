@@ -27,7 +27,7 @@ async function getMovieInfo(movieId: string): Promise<any> {
     } else {
       throw new Error('Failed to fetch movie information');
     }
-  } catch (err) {
+  } catch (err: any) {
     console.error('Error:', err);
     throw err;
   }
@@ -52,7 +52,7 @@ async function getCasting(movieId: string): Promise<any> {
     } else {
       throw new Error('Failed to fetch casting information');
     }
-  } catch (err) {
+  } catch (err: any) {
     console.error('Error:', err);
     throw err;
   }
@@ -90,7 +90,7 @@ async function addScreening(req: Request, res: Response) {
     await screening.save();
 
     res.status(200).send({ message: "Screening was created successfully!" });
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).send({ message: err });
   }
 }
@@ -98,17 +98,27 @@ async function addScreening(req: Request, res: Response) {
 // Get all screenings
 async function getAllScreenings(req: Request, res: Response) {
   try {
-    const screenings = await Screening.find().exec()
-
-    if (!screenings) {
-      res.status(500).send({ message: "Screenings not found" });
-      return;
-    }
+    const screenings = await Screening.find()
 
     res.status(200).send({ screenings });
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).send({ message: err });
   }
 }
 
-export default { addScreening, getAllScreenings }
+// Get one screening
+async function getOneScreening(req: Request, res: Response) {
+  try {
+    const screeningId = req.params.id
+    const screening = await Screening.findById(screeningId)
+
+    res.status(200).send({ screening });
+  } catch (err: any) {
+    if (err.name === "CastError") {
+      res.status(404).json({ error: 'Invalid Screening ID' });
+    }
+    res.status(500).send({ message: err });
+  }
+}
+
+export default { addScreening, getAllScreenings, getOneScreening }

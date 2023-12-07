@@ -6,7 +6,6 @@ import cookieSession from 'cookie-session';
 
 import database from './models';
 import authRoutes from './routes/auth.routes'
-import userRoutes from './routes/user.routes'
 import screeningsRoutes from './routes/screenings.routes'
 
 // ENV variables
@@ -62,7 +61,6 @@ database.mongoose
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/test', userRoutes);
 app.use('/api/screenings', screeningsRoutes);
 
 // Set port, listen for requests
