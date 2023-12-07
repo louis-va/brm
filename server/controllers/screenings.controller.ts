@@ -95,4 +95,20 @@ async function addScreening(req: Request, res: Response) {
   }
 }
 
-export default { addScreening }
+// Get all screenings
+async function getAllScreenings(req: Request, res: Response) {
+  try {
+    const screenings = await Screening.find().exec()
+
+    if (!screenings) {
+      res.status(500).send({ message: "Screenings not found" });
+      return;
+    }
+
+    res.status(200).send({ screenings });
+  } catch (err) {
+    res.status(500).send({ message: err });
+  }
+}
+
+export default { addScreening, getAllScreenings }
