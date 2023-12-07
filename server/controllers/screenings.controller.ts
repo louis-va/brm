@@ -33,7 +33,7 @@ async function getMovieInfo(movieId: string): Promise<any> {
   }
 }
 
-// Get casting from TMDB API
+// Get a movie's casting from TMDB API
 async function getCasting(movieId: string): Promise<any> {
   const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=fr-FR`;
   const options = {
@@ -58,18 +58,48 @@ async function getCasting(movieId: string): Promise<any> {
   }
 }
 
+// Get a movie's videos from TMDB API
+async function getVideos(movieId: string): Promise<any> {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=fr-FR`;
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${TMDB_API_KEY}`
+    }
+  };
+
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) {
+      const json = await response.json();
+      return json;
+    } else {
+      throw new Error('Failed to fetch videos');
+    }
+  } catch (err: any) {
+    console.error('Error:', err);
+    throw err;
+  }
+}
+
 // Create a new screening
 async function addScreening(req: Request, res: Response) {
   try {
     const movieId = req.body.movie_id
-    const movieInfo = await getMovieInfo(movieId)
-    const casting = await getCasting(movieId)
+
+    // execute all promises at the same time
+    const [movieInfo, casting, videos] = await Promise.all([
+        getMovieInfo(movieId), 
+        getCasting(movieId), 
+        getVideos(movieId)
+      ]);
 
     const screening = new Screening({
       movie: {
         title: movieInfo.title,
         director: casting.crew
-          .filter((member: any) => member.job === "Director") // filter the array to have only members with the director job
+          .filter((member: any) => member.job === "Director") // filter the array to have only directors
           .map((director: any) => director.name), // returns only the name of the crew member
         casting: casting.cast
           .slice(0, 5) // returns only the 5 first cast members
@@ -78,7 +108,10 @@ async function addScreening(req: Request, res: Response) {
         synopsis: movieInfo.overview,
         poster: `https://image.tmdb.org/t/p/w300${movieInfo.poster_path}`,
         backdrop: `https://image.tmdb.org/t/p/w1280${movieInfo.backdrop_path}`,
-        trailer: "",
+        trailer: videos.results
+          .filter((video: any) => video.type === "Trailer" && video.site === "YouTube") // filter the array to have only trailers from youtube
+          .map((video: any) => `https://www.youtube.com/embed/${video.key}`) // returns only the url of the video
+          .slice(0, 1).join(''), // returns only the first trailer
         score: movieInfo.vote_average,
         length: movieInfo.runtime,
         release: movieInfo.release_date
