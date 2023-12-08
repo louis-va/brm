@@ -8,8 +8,8 @@ import cookieSession from 'cookie-session';
 // Import routes
 import database from './models';
 import authRoutes from './routes/auth.routes'
-import screeningRoutes from './routes/screenings.routes'
-import bookingRoutes from './routes/bookings.routes'
+import screeningRoutes from './routes/screening.routes'
+import bookingRoutes from './routes/booking.routes'
 
 // ENV variables
 dotenv.config();
