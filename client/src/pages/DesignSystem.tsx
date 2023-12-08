@@ -11,6 +11,7 @@ import { EventCard } from "../ui/features/EventCard";
 import { Footer } from "../ui/features/Footer";
 import MovieCard from "../ui/features/movieCard";
 import { Auth } from "../ui/features/Auth";
+import Tickets from "../ui/features/Tickets";
 
 export default function DesignSystem() {
   return (
@@ -169,6 +170,12 @@ export default function DesignSystem() {
 
         <div className="bg-blackPrimary rounded-25">
           <Auth bgColor="orange"></Auth>
+        </div>
+
+        <div className="w-2/5">
+          <div className="bg-whitePrimary p-30 rounded-25 flex flex-col gap-30">
+            <Tickets />
+          </div>
         </div>
       </div>
       <Footer></Footer>

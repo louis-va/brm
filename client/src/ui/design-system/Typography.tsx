@@ -1,9 +1,9 @@
 interface TypographyProps {
   fontSize: "12" | "15" | "20" | "32" | "40" | "64" | "96";
-  textColor: "orange" | "black" | "white";
+  textColor: "orange" | "black" | "white" | string;
   fontFamily: "Franklin" | "FranklinBold";
   uppercase?: boolean;
-  component?: "h1" | "h2" | "h3" | "p" | "span" ;
+  component?: "h1" | "h2" | "h3" | "p" | "span";
   hoverTextColor?: "orange" | "black" | "white";
   underline?: boolean;
   children?: React.ReactNode;
