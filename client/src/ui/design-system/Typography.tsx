@@ -1,5 +1,5 @@
 interface TypographyProps {
-  fontSize: "12" | "15" | "20" | "32" | "40" | "64" | "96";
+  fontSize: "12" | "15" | "20" |"24" | "32" | "40" | "64" | "96";
   textColor: "orange" | "black" | "white" | string;
   fontFamily: "Franklin" | "FranklinBold";
   uppercase?: boolean;
@@ -39,6 +39,9 @@ export const Typography = ({
       break;
     case "20":
       fontSizeClass = "text-20";
+      break;
+      case "24":
+      fontSizeClass = "text-24";
       break;
     case "32":
       fontSizeClass = "text-32";
