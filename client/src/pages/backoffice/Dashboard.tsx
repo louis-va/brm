@@ -1,7 +1,7 @@
 import {HeaderBo} from "../../ui/backoffice/features/HeaderBO.tsx";
 import {HeaderVertical} from "../../ui/backoffice/features/HeaderVertical.tsx";
-import Card from "../../ui/backoffice/design-system/Card.tsx";
-import Chart from "../../ui/backoffice/design-system/Chart.tsx";
+import Card from "../../ui/backoffice/features/Card.tsx";
+import CardStats from "../../ui/backoffice/features/CardStats.tsx";
 
 export default function Dashboard() {
     return (
@@ -13,6 +13,11 @@ export default function Dashboard() {
                 <HeaderVertical></HeaderVertical>
             </aside>
             <main className="col-span-4 row-span-4 row-start-2 overflow-y-auto">
+                <div className="flex flex-row justify-around items-center">
+                    <CardStats></CardStats>
+                    <CardStats></CardStats>
+                    <CardStats></CardStats>
+                </div>
                 <div className="h-full flex flex-row flex-wrap justify-around items-center">
                     <Card></Card>
                     <Card></Card>
