@@ -3,7 +3,7 @@ import { Input } from "../design-system/Input";
 import { Typography } from "../design-system/Typography";
 import { Button } from "../design-system/Button";
 
-export default function UserInfo() {
+export default function UserNewPassword() {
   return (
     <div className="bg-orangePrimary p-30 rounded-25">
       <Typography
@@ -14,22 +14,19 @@ export default function UserInfo() {
         uppercase
         className="text-center"
       >
-        Informations personnelles
+        Nouveau mot de passe
       </Typography>
       <Form className="w-full flex flex-col gap-5">
-        <div className="flex gap-5 justify-between ">
-          <Input placeholder="Doe" type="text" label="Nom" variant="orange" />
-          <Input
-            placeholder="John"
-            type="text"
-            label="Prénom"
-            variant="orange"
-          />
-        </div>
         <Input
-          placeholder="johndoe@gmail.com"
-          type="email"
-          label="Adresse mail"
+          placeholder="*********"
+          type="password"
+          label="Nouveau mot de passe"
+          variant="orange"
+        />
+        <Input
+          placeholder="*********"
+          type="password"
+          label="Resaisir votre nouveau mot de passe"
           variant="orange"
         />
         <Button variant="black" type="submit" className="self-end">
