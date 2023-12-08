@@ -10,6 +10,7 @@ const Chart = ({ data1, data2, className, children }: ChartProps) => {
     const percentageData1 = (data1[1] / total) * 100;
     const percentageData2 = (data2[1] / total) * 100;
     
+    
     return (
         <section className={`${className} w-full flex flex-row flex-nowrap items-center`}>
             <div className="bg-orangePrimary" style={{ width: `${percentageData1}%` }}>
@@ -22,5 +23,6 @@ const Chart = ({ data1, data2, className, children }: ChartProps) => {
         </section>
     );
 };
+
 
 export default Chart;
