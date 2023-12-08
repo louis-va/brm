@@ -28,6 +28,9 @@ router.get("/dates",
 );
 
 router.get("/:id",
+  [
+    verifyScreening.checkScreeningId
+  ],
   controller.getOneScreening
 );
 

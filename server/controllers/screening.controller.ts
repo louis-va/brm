@@ -147,9 +147,6 @@ async function getOneScreening(req: Request, res: Response) {
 
     res.status(200).send({ screening });
   } catch (err: any) {
-    if (err.name === "CastError") {
-      res.status(404).json({ error: 'Invalid Screening ID' });
-    }
     res.status(500).send({ message: err });
   }
 }
