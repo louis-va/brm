@@ -8,6 +8,7 @@ interface TypographyProps {
   underline?: boolean;
   children?: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
 export const Typography = ({
