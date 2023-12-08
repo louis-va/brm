@@ -10,7 +10,7 @@ interface NavProps {
 export const Nav = ({ className }: NavProps) => {
   return (
     <nav
-      className={`${className} sticky top-0 w-full h-fit p-30 bg-orangePrimary flex flex-row justify-between items-center z-10`}
+      className={`${className} sticky top-0 w-full h-fit p-30 bg-orangePrimary flex flex-row justify-between items-center z-50`}
     >
       <Logo size={"small"} />
       <div className="flex gap-5">

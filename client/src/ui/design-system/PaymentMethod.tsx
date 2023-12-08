@@ -6,8 +6,15 @@ import {
   FaCcVisa,
 } from "react-icons/fa6";
 
+type CreditCard = "creditCard";
+type AmazonPay = "amazonPay";
+type ApplePay = "applePay";
+type Paypal = "paypal";
+
+type PaymentMethodTitle = CreditCard | AmazonPay | ApplePay | Paypal;
+
 interface PaymentMethodProps {
-  title: "creditCard" | "amazonPay" | "applePay" | "paypal";
+  title: PaymentMethodTitle;
   bgColor?: "orange" | "white";
   className?: string;
   children?: React.ReactNode;
@@ -24,7 +31,7 @@ export const PaymentMethod = ({
 
   let logoContent: React.ReactNode = null;
   let titleContent = "";
-  let sizeLogo = 40
+  let sizeLogo = 40;
 
   switch (title) {
     case "creditCard":

@@ -5,8 +5,6 @@ import {
   FaCcApplePay,
   FaCcPaypal,
   FaCcVisa,
-  FaPlus,
-  FaMinus,
 } from "react-icons/fa6";
 import { Typography } from "../design-system/Typography";
 import { Button } from "../design-system/Button";
@@ -39,14 +37,12 @@ export const Accordion = ({ title }: AccordionProps) => {
       );
       content = 
       <form action="" className="flex flex-col gap-10">
-        <div className="flex gap-4">
+        <div className="grid grid-cols-2 gap-4">
           <Input 
           type="text" 
           placeholder="John Doe" 
           label="Nom du titulaire" 
-          variant="white"
-          className="grow"
-          />
+          variant="white" />
           <Input 
           type="text" 
           placeholder="1234 5678 9012 3456" 
