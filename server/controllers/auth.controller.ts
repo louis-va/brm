@@ -3,17 +3,13 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
+import { AuthenticatedRequest } from '../interfaces/AuthenticatedRequest';
 import database from '../models';
 const User = database.user;
 
 // ENV variables
 dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
-
-// Types
-interface AuthenticatedRequest extends Request {
-  userId?: string;
-}
 
 // Sign Up
 async function signUp(req: Request, res: Response) {

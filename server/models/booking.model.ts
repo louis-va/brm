@@ -16,7 +16,8 @@ interface IBooking extends Document {
   screening_id: Types.ObjectId | IScreening,
   user_id: Types.ObjectId | IUser,
   seats: string[],
-  tickets: ITicket[]
+  qr_code: string,
+  tickets: ITicket[],
   snacks: ISnack[]
 }
 
@@ -43,6 +44,7 @@ const BookingSchema = new Schema({
     ref: 'User'
   },
   seats: [String],
+  qr_code: String,
   tickets: [TicketSchema],
   snacks: [SnackSchema]
 });
