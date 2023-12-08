@@ -1,15 +1,15 @@
 interface TagProps {
-  bgColor: "orange" | "black" | "white" | string ;
+  bgColor: "orange" | "black" | "white" | "blackBorderWhite" | string;
   rounded?: boolean;
   className?: string;
   children?: React.ReactNode;
 }
 
-export const Tag = ({ 
-  bgColor, 
-  rounded = true, 
+export const Tag = ({
+  bgColor,
+  rounded = true,
   children,
-    className
+  className,
 }: TagProps) => {
   let bgColorClasses;
   let borderClasses;
@@ -26,6 +26,10 @@ export const Tag = ({
     case "white":
       bgColorClasses = "bg-whitePrimary text-blackPrimary";
       borderClasses = "border-2 border-blackPrimary";
+      break;
+    case "blackBorderWhite":
+      bgColorClasses = "bg-blackPrimary text-whitePrimary";
+      borderClasses = "border-2 border-whitePrimary";
       break;
     default:
       bgColorClasses = "";
