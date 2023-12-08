@@ -26,13 +26,16 @@ async function checkScreeningId(req:Request, res: Response, next: NextFunction) 
     const screening = await Screening.findById(req.body.screening_id)
 
     if (!screening) {
-      res.status(403).send({ message: "Invalid screening id" });
+      res.status(403).send({ message: "Invalid Screening ID" });
       return;
     }
 
     next();
     return;
   } catch(err: any) {
+    if (err.name === "CastError") {
+      res.status(404).json({ error: 'Invalid Screening ID' });
+    }
     res.status(500).send({ message: err.message || "Some error occurred while checking admin role." });
   }
 }
