@@ -4,7 +4,7 @@ import { AuthenticatedRequest } from '../interfaces/AuthenticatedRequest';
 import database from '../models';
 const Booking = database.booking;
 
-// Create a new screening
+// Create a new booking
 async function addBooking(req: AuthenticatedRequest, res: Response) {
   try {
     const booking = new Booking({
@@ -18,8 +18,8 @@ async function addBooking(req: AuthenticatedRequest, res: Response) {
       },
       seats: req.body.seats,
       qr_code: String,
-      tickets: [TicketSchema],
-      snacks: [SnackSchema]
+      tickets: req.body.tickets,
+      snacks: req.body.snacks
     });
 
     await booking.save();
@@ -29,3 +29,5 @@ async function addBooking(req: AuthenticatedRequest, res: Response) {
     res.status(500).send({ message: err });
   }
 }
+
+export default { addBooking }
