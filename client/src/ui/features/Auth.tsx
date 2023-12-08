@@ -64,8 +64,9 @@ const tabsData = [
   {
     buttonContent: "S'inscrire",
     content: (
-      <div className="flex flex-col gap-10">
+      <form action="" className="flex flex-col gap-10">
         <div className="grid grid-cols-2 gap-4">
+          <Select label="Genre" variant="white" options={options} />
           <Input type="text" placeholder="Nom" label="Nom" variant="white" />
           <Input type="text" placeholder="Prénom" label="Prénom" variant="white" />
           <Input
@@ -74,7 +75,6 @@ const tabsData = [
             label="Adresse email"
             variant="white"
           />
-          <Select label="Genre" variant="white" options={options} />
           <Input
             type="password"
             placeholder="Mot de passe"
@@ -107,7 +107,7 @@ const tabsData = [
             </Typography>
           </Button>
         </div>
-      </div>
+      </form>
     ),
   },
 ];

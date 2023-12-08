@@ -28,7 +28,7 @@ export const PaymentMethod = ({
 
   switch (title) {
     case "creditCard":
-      titleContent = "Carte de crédit ";
+      titleContent = "Carte de crédit";
       logoContent = <FaCcVisa size={sizeLogo} />;
       break;
     case "amazonPay":
