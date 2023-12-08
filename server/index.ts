@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import cookieSession from 'cookie-session';
 
-// Import routes
+// Import routes & models
 import database from './models';
 import authRoutes from './routes/auth.routes'
 import screeningRoutes from './routes/screening.routes'

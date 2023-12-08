@@ -8,14 +8,8 @@ const Booking = database.booking;
 async function addBooking(req: AuthenticatedRequest, res: Response) {
   try {
     const booking = new Booking({
-      screening_id: {
-        type: req.body.screening_id,
-        ref: 'Screening'
-      },
-      user_id: {
-        type: req.userId,
-        ref: 'User'
-      },
+      screening_id: req.body.screening_id,
+      user_id: req.userId,
       seats: req.body.seats,
       qr_code: String,
       tickets: req.body.tickets,
