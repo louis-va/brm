@@ -1,12 +1,15 @@
+// Import dependencies
 import express, { Express, Request, Response, NextFunction } from 'express';
 import { ConnectOptions } from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import cookieSession from 'cookie-session';
 
+// Import routes & models
 import database from './models';
 import authRoutes from './routes/auth.routes'
-import screeningsRoutes from './routes/screenings.routes'
+import screeningRoutes from './routes/screening.routes'
+import bookingRoutes from './routes/booking.routes'
 
 // ENV variables
 dotenv.config();
@@ -61,7 +64,8 @@ database.mongoose
 
 // Routes
 app.use('/auth', authRoutes);
-app.use('/screenings', screeningsRoutes);
+app.use('/screenings', screeningRoutes);
+app.use('/bookings', bookingRoutes);
 
 // Set port, listen for requests
 app.listen(PORT, () => {

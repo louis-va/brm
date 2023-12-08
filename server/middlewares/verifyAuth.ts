@@ -42,7 +42,7 @@ function verifyToken(req: AuthenticatedRequest, res: Response, next: NextFunctio
 // is admin
 async function isAdmin(req: AuthenticatedRequest, res: Response, next: NextFunction) {
   try {
-    const user = await User.findById(req.userId).exec()
+    const user = await User.findById(req.userId)
 
     if (!user || !user.role) {
       res.status(403).send({ message: "User role is missing" });

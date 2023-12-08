@@ -6,7 +6,7 @@ const Screening = database.screening;
 // Check if date + time already exist for a screening
 async function checkDate(req: Request, res: Response, next: NextFunction) {
   try {
-    const screening = await Screening.findOne({ date: req.body.date }).exec()
+    const screening = await Screening.findOne({ date: req.body.date })
 
     if (screening) {
       res.status(400).send({ message: "This date has already been used for another screening." });
@@ -20,4 +20,24 @@ async function checkDate(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-export default { checkDate };
+// Check if screening exists
+async function checkScreeningId(req:Request, res: Response, next: NextFunction) {
+  try {
+    const screening = await Screening.findById(req.body.screening_id)
+
+    if (!screening) {
+      res.status(403).send({ message: "Invalid Screening ID" });
+      return;
+    }
+
+    next();
+    return;
+  } catch(err: any) {
+    if (err.name === "CastError") {
+      res.status(404).json({ error: 'Invalid Screening ID' });
+    }
+    res.status(500).send({ message: err.message || "Some error occurred while checking admin role." });
+  }
+}
+
+export default { checkDate, checkScreeningId };
