@@ -60,8 +60,8 @@ database.mongoose
   });
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/screenings', screeningsRoutes);
+app.use('/auth', authRoutes);
+app.use('/screenings', screeningsRoutes);
 
 // Set port, listen for requests
 app.listen(PORT, () => {

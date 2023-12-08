@@ -66,8 +66,16 @@ npm run build
 npm run start
 ```
 
+#### Docker Compose
+
+You can also run the server with docker on port 8000.
+
+```sh
+docker compose up -d
+```
+
 #### Deployment
-During deployment, in `/client/.env.production`, set `VITE_API_URL` as your database URL. Additionally, configure the `allowedOrigins` in `/server/index.ts` to permit your client's URL to connect to the server.
+During deployment, in `/client/.env.production`, set `VITE_API_URL` as your database URL. Additionally, configure the `allowedOrigins` in `/server/index.ts` to allow your client's URL to connect to the server.
 
 ### 🌐 Ports
 **Client**: http://localhost:3000 <br>
