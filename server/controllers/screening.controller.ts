@@ -133,7 +133,7 @@ async function getAllScreenings(req: Request, res: Response) {
   try {
     const screenings = await Screening.find()
 
-    res.status(200).send({ screenings });
+    res.status(200).send(screenings);
   } catch (err: any) {
     res.status(500).send({ message: err });
   }
@@ -148,10 +148,9 @@ async function getOneScreening(req: Request, res: Response) {
     const bookings = await Booking.find({ screening_id: screeningId }, 'seats')
     
     if (bookings.length > 0) {
-      screening!.seats = bookings.map(booking => booking.seats).flat(1);
-      console.log(screening!.seats)
+      screening!.takenSeats = bookings.map(booking => booking.seats).flat(1);
     } else {
-      screening!.seats = []
+      screening!.takenSeats = []
     }
 
     res.status(200).send(screening);
@@ -165,7 +164,7 @@ async function getGenres(req: Request, res: Response) {
   try {
     const genres = await Screening.distinct('movie.genres')
 
-    res.status(200).send({ genres });
+    res.status(200).send(genres);
   } catch (err: any) {
     res.status(500).send({ message: err });
   }
@@ -179,7 +178,7 @@ async function getDates(req: Request, res: Response) {
     // filter the array of dates to have only unique dates without times 
     const dates = Array.from(new Set(rawDates.map(date => new Date(date).toISOString().split('T')[0])));
 
-    res.status(200).send({ dates });
+    res.status(200).send(dates);
   } catch (err: any) {
     res.status(500).send({ message: err });
   }
