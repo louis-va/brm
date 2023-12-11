@@ -5,21 +5,25 @@ import database from '../models';
 const Booking = database.booking;
 
 // Create a new booking
-async function addBooking(req: AuthenticatedRequest, res: Response) {
+function addBooking(req: AuthenticatedRequest, res: Response) {
   try {
     const booking = new Booking({
       screening_id: req.body.screening_id,
       user_id: req.userId,
       seats: req.body.seats,
-      qr_code: String,
       tickets: req.body.tickets,
       snacks: req.body.snacks,
       price: req.body.price
     });
 
-    await booking.save();
-
-    res.status(200).send({ message: "Booking was created successfully!" });
+    booking.save()
+      .then(booking => {
+        booking.qr_code = `https://api.qrserver.com/v1/create-qr-code/?data=${booking._id}&size=200x200&bgcolor=FC4B20`;
+        res.status(200).send({ message: "Booking was created successfully!" });
+      })
+      .catch(error => {
+        res.status(500).send({ message: error });
+      });
   } catch (err: any) {
     res.status(500).send({ message: err });
   }
