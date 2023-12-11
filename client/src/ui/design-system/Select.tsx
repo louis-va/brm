@@ -1,5 +1,6 @@
 import { Typography } from "./Typography";
-import { useState } from "react";
+//import { useState } from "react";
+import { FaAngleDown } from "react-icons/fa6";
 
 interface SelectProps {
   variant?: "orange" | "black" | "white";
@@ -38,20 +39,25 @@ export const Select = ({
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 relative">
       <label className="ml-[30px]">
         <Typography fontSize="20" textColor="black" fontFamily="Franklin">
           {label}
         </Typography>
       </label>
-      <select
-        className={`py-[7px] px-[30px] rounded-full border ${selectClasses} ${className}`}
-      >
-        <option className="text-gray-400" value="" disabled selected>
-          Sélectionner votre genre
-        </option>
-        {renderOptions}
-      </select>
+      <div className="relative">
+        <select
+          className={`py-[7px] px-[30px] rounded-full border appearance-none ${selectClasses} ${className}`}
+        >
+          <option className="text-gray-400" value="">
+            Mr.
+          </option>
+          {renderOptions}
+        </select>
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+        <FaAngleDown size="13px" />
+        </div>
+      </div>
     </div>
   );
 };

@@ -18,6 +18,7 @@ export default function DesignSystem() {
     <>
       <Header></Header>
       <div className="bg-blackPrimary w-full h-fit p-30 flex flex-col gap-50">
+
         <Accordion title="card" />
         <Accordion title="paypal" />
         <Accordion title="amazon" />
@@ -192,7 +193,7 @@ export default function DesignSystem() {
         </div>
 
         <div className="bg-blackPrimary rounded-25">
-          <Auth bgColor="orange"></Auth>
+          <Auth></Auth>
         </div>
       </div>
       <Footer></Footer>
