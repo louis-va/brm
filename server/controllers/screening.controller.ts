@@ -145,12 +145,12 @@ async function getOneScreening(req: Request, res: Response) {
     const screeningId = req.params.id
     const screening = await Screening.findById(screeningId)
 
+    // Get booked seats
     const bookings = await Booking.find({ screening_id: screeningId }, 'seats')
-    
     if (bookings.length > 0) {
-      screening!.takenSeats = bookings.map(booking => booking.seats).flat(1);
+      screening!.bookedSeats = bookings.map(booking => booking.seats).flat(1);
     } else {
-      screening!.takenSeats = []
+      screening!.bookedSeats = []
     }
 
     res.status(200).send(screening);
