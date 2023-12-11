@@ -167,10 +167,28 @@ export default function DesignSystem() {
         </div>
 
         <div className="flex gap-5">
-          <MovieCard bgColor="orange" />
-          <MovieCard bgColor="white" />
-          <MovieCard bgColor="orange" />
-          <MovieCard bgColor="white" />
+          <MovieCard
+            bgColor="orange"
+            movieData={{
+              title: "Call Me By Your Name",
+              director: "Luca Guadagnino",
+              dateShow: "27/12",
+              hourShow: "21:15",
+              imgUrl:
+                "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT4yhbrgOZqmfO7dIp2iO_uoP22H4G7tp2fa6M23zEKGKg7vymr",
+            }}
+          />
+          <MovieCard
+            bgColor="orange"
+            movieData={{
+              title: "Call Me By Your Name",
+              director: "Luca Guadagnino",
+              dateShow: "27/12",
+              hourShow: "21:15",
+              imgUrl:
+                "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT4yhbrgOZqmfO7dIp2iO_uoP22H4G7tp2fa6M23zEKGKg7vymr",
+            }}
+          />
         </div>
 
         <div className="bg-blackPrimary rounded-25">
