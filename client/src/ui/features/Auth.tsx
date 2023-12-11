@@ -50,10 +50,7 @@ const tabsData = [
             </Typography>
           </a>
           <Button variant="black">
-            <Typography 
-            fontSize="20" 
-            textColor="orange" 
-            fontFamily="Franklin">
+            <Typography fontSize="20" textColor="orange" fontFamily="Franklin">
               Se connecter
             </Typography>
           </Button>
@@ -64,10 +61,15 @@ const tabsData = [
   {
     buttonContent: "S'inscrire",
     content: (
-      <div className="flex flex-col gap-10">
+      <form className="flex flex-col gap-10">
         <div className="grid grid-cols-2 gap-4">
           <Input type="text" placeholder="Nom" label="Nom" variant="white" />
-          <Input type="text" placeholder="Prénom" label="Prénom" variant="white" />
+          <Input
+            type="text"
+            placeholder="Prénom"
+            label="Prénom"
+            variant="white"
+          />
           <Input
             type="email"
             placeholder="Adresse email"
@@ -99,21 +101,19 @@ const tabsData = [
             une minuscule et un chiffre.
           </Typography>
           <Button variant="black" className="w-fit">
-            <Typography 
-            fontSize="20" 
-            textColor="white" 
-            fontFamily="Franklin">
+            <Typography fontSize="20" textColor="white" fontFamily="Franklin">
               S'inscrire
             </Typography>
           </Button>
         </div>
-      </div>
+      </form>
     ),
   },
 ];
-export const Auth = ({ bgColor, className, children }: AuthProps) => {
+
+export const Auth = ({ bgColor, className, children}: AuthProps) => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const [bgColorState, setBgColor] = useState<"orange" | "white">(bgColor);
+  const [bgColorState, setBgColor] = useState(bgColor);
 
   let bgColorClasses;
 
@@ -145,9 +145,7 @@ export const Auth = ({ bgColor, className, children }: AuthProps) => {
                 setBgColor("orange");
               }
             }}
-            className={`p-2 ${
-              selectedTab === index ? "underline" : ""
-            }`}
+            className={`p-2 ${selectedTab === index ? "underline" : ""}`}
           >
             <Typography
               fontSize="40"

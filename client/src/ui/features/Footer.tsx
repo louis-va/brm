@@ -9,7 +9,7 @@ interface FooterProps {
 export const Footer = ({ className }: FooterProps) => {
   return (
     <>
-      <footer className={`${className} w-full h-fit p-30 flex flex-col gap-20 bg-orangePrimary`}>
+      <footer className={`${className} relative w-full h-fit p-30 flex flex-col gap-20 bg-orangePrimary z-50`}>
         <div className="flex flex-row">
           <div className="w-1/2 flex flex-row gap-10">
             <Typography

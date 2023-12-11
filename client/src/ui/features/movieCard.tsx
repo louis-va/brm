@@ -4,9 +4,10 @@ import { Tag } from "../design-system/Tag";
 
 interface MovieCardProps {
   bgColor?: string;
+  noText?: boolean;
 }
 
-export default function MovieCard({ bgColor }: MovieCardProps) {
+export default function MovieCard({ bgColor, noText }: MovieCardProps) {
   let bgColorClasses;
   let tagBgColor;
 
@@ -50,36 +51,38 @@ export default function MovieCard({ bgColor }: MovieCardProps) {
           className="absolute inset-0 w-full h-full"
         />
       </div>
-      <div
-        className={`${bgColorClasses} p-[15px] rounded-25 flex flex-col gap-6`}
-      >
-        <div>
-          <Typography
-            fontSize="32"
-            textColor="black"
-            fontFamily="FranklinBold"
-            uppercase
-            className="text-center"
-            component="h2"
-          >
-            {movieTitle}
-          </Typography>
-          <Typography
-            fontSize="20"
-            textColor="black"
-            fontFamily="FranklinBold"
-            uppercase
-            className="text-center"
-            component="h3"
-          >
-            {director}
-          </Typography>
+      {!noText && (
+        <div
+          className={`${bgColorClasses} p-[15px] rounded-25 flex flex-col gap-6`}
+        >
+          <div>
+            <Typography
+              fontSize="32"
+              textColor="black"
+              fontFamily="FranklinBold"
+              uppercase
+              className="text-center"
+              component="h2"
+            >
+              {movieTitle}
+            </Typography>
+            <Typography
+              fontSize="20"
+              textColor="black"
+              fontFamily="FranklinBold"
+              uppercase
+              className="text-center"
+              component="h3"
+            >
+              {director}
+            </Typography>
+          </div>
+          <div className="flex justify-between">
+            <Tag bgColor="black">{dateShow}</Tag>
+            <Tag bgColor={`${tagBgColor}`}>{hourShow}</Tag>
+          </div>
         </div>
-        <div className="flex justify-between">
-          <Tag bgColor="black">{dateShow}</Tag>
-          <Tag bgColor={`${tagBgColor}`}>{hourShow}</Tag>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
