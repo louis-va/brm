@@ -15,7 +15,7 @@ const List = ({className, children}: ListProps) => {
     }
 
     return (
-        <nav className={`${className} overflow-y-auto bg-blackPrimary`}>
+        <nav className={`${className}  bg-blackPrimary`}>
             <ul className={`${className} w-[22.5rem] flex flex-col pl-[6.625rem] pt-[5.875rem] items-center`}>
                 {Object.entries(values).map(([navKey, {key, value}]) => (
                     <li className={'py-4 w-full'} key={navKey}>
