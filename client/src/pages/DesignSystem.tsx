@@ -168,7 +168,7 @@ export default function DesignSystem() {
 
         <div className="flex gap-5">
           <MovieCard
-            bgColor="orange"
+            bgColor="white"
             movieData={{
               title: "Call Me By Your Name",
               director: "Luca Guadagnino",
