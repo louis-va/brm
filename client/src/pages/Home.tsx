@@ -48,7 +48,7 @@ const films = [
     title: "How to have sex",
     director: "Molly Manning Walker",
     dateShow: "04/12",
-    hourShow: "21:10",
+    hourShow: "20:10",
     imgUrl:
       "https://www.cinema-palace.be/sites/default/files/styles/max_popup/public/media/6706497be948bdc0eddd1d68f758da68de316d86.jpeg?itok=rnZ_oM-L",
   },
