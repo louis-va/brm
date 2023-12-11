@@ -11,6 +11,7 @@ export const Tag = ({
   children,
   className,
 }: TagProps) => {
+  
   let bgColorClasses;
   let borderClasses;
 

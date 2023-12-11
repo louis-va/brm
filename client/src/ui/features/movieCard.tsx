@@ -18,16 +18,16 @@ interface MovieCardProps {
 
 export default function MovieCard({ bgColor, noText, movieData }: MovieCardProps) {
   let bgColorClasses;
-  //let tagBgColor;
+  let tagBgColor = "";
 
   switch (bgColor) {
     case "orange":
       bgColorClasses = "bg-orangePrimary text-blackPrimary";
-      //tagBgColor = "orange";
+      tagBgColor = "orange";
       break;
     case "white":
       bgColorClasses = "bg-whitePrimary text-blackPrimary";
-      //tagBgColor = "white";
+      tagBgColor = "white";
       break;
     default:
       bgColorClasses = "";
@@ -67,7 +67,7 @@ export default function MovieCard({ bgColor, noText, movieData }: MovieCardProps
           </div>
           <div className="flex justify-between">
             <Tag bgColor="black">{dateShow}</Tag>
-            <Tag bgColor="white"/* {tagColor} */>{hourShow}</Tag>
+            <Tag bgColor={tagBgColor}>{hourShow}</Tag>
           </div>
         </div>
       )}

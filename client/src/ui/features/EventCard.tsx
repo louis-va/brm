@@ -15,7 +15,7 @@ export const EventCard = ({
   children,
 }: EventCardProps) => {
   const defaultStyle =
-    "w-1/2 h-auto rounded-25 flex flex-col justify-between items-center p-30 gap-20";
+    "w-full h-full rounded-25 flex flex-col justify-between items-center p-30 gap-20";
 
   let eventCardStyle = defaultStyle;
   let eventTypeText = "";
