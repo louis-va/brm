@@ -12,9 +12,8 @@ export default function Payment() {
       <Header />
 
       <div className="w-full p-30 flex gap-30">
-        <div className="relative flex flex-col gap-30 w-3/4">
-          <Auth className="overlay relative z-20" bgColor="orange"></Auth>
-          <div className="absolute w-full h-full bg-black bg-opacity-70 flex justify-center items-center z-10"></ div>
+        <div className="flex flex-col gap-30 w-3/4">
+          <Auth bgColor="orange"></Auth>
           <div className="flex flex-col gap-30 ">
             <Accordion title="card" />
             <Accordion title="paypal" />
