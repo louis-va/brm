@@ -17,7 +17,7 @@ interface IMovie {
 interface IScreening extends Document {
   movie: IMovie,
   date: Date,
-  takenSeats: string[]
+  bookedSeats: string[]
 }
 
 const ScreeningSchema = new Schema({
@@ -35,7 +35,7 @@ const ScreeningSchema = new Schema({
     release: Date
   },
   date: Date,
-  takenSeats: [String]
+  bookedSeats: [String]
 });
 
 const Screening: Model<IScreening> = mongoose.model<IScreening>('Screening', ScreeningSchema);
