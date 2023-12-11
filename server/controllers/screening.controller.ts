@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 
 import database from '../models';
 const Screening = database.screening;
+const Booking = database.booking;
 
 // ENV variables
 dotenv.config();
@@ -116,8 +117,7 @@ async function addScreening(req: Request, res: Response) {
         length: movieInfo.runtime,
         release: movieInfo.release_date
       },
-      date: req.body.date,
-      seats: []
+      date: req.body.date
     });
 
     await screening.save();
@@ -133,7 +133,7 @@ async function getAllScreenings(req: Request, res: Response) {
   try {
     const screenings = await Screening.find()
 
-    res.status(200).send({ screenings });
+    res.status(200).send(screenings);
   } catch (err: any) {
     res.status(500).send({ message: err });
   }
@@ -145,11 +145,16 @@ async function getOneScreening(req: Request, res: Response) {
     const screeningId = req.params.id
     const screening = await Screening.findById(screeningId)
 
-    res.status(200).send({ screening });
-  } catch (err: any) {
-    if (err.name === "CastError") {
-      res.status(404).json({ error: 'Invalid Screening ID' });
+    const bookings = await Booking.find({ screening_id: screeningId }, 'seats')
+    
+    if (bookings.length > 0) {
+      screening!.takenSeats = bookings.map(booking => booking.seats).flat(1);
+    } else {
+      screening!.takenSeats = []
     }
+
+    res.status(200).send(screening);
+  } catch (err: any) {
     res.status(500).send({ message: err });
   }
 }
@@ -159,7 +164,7 @@ async function getGenres(req: Request, res: Response) {
   try {
     const genres = await Screening.distinct('movie.genres')
 
-    res.status(200).send({ genres });
+    res.status(200).send(genres);
   } catch (err: any) {
     res.status(500).send({ message: err });
   }
@@ -173,7 +178,7 @@ async function getDates(req: Request, res: Response) {
     // filter the array of dates to have only unique dates without times 
     const dates = Array.from(new Set(rawDates.map(date => new Date(date).toISOString().split('T')[0])));
 
-    res.status(200).send({ dates });
+    res.status(200).send(dates);
   } catch (err: any) {
     res.status(500).send({ message: err });
   }

@@ -18,7 +18,8 @@ interface IBooking extends Document {
   seats: string[],
   qr_code: string,
   tickets: ITicket[],
-  snacks: ISnack[]
+  snacks: ISnack[],
+  price: number
 }
 
 const TicketSchema = new Schema({
@@ -46,7 +47,8 @@ const BookingSchema = new Schema({
   seats: [String],
   qr_code: String,
   tickets: [TicketSchema],
-  snacks: [SnackSchema]
+  snacks: [SnackSchema],
+  price: Number
 });
 
 const Booking: Model<IBooking> = mongoose.model<IBooking>('Booking', BookingSchema);

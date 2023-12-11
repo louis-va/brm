@@ -23,7 +23,8 @@ async function checkDate(req: Request, res: Response, next: NextFunction) {
 // Check if screening exists
 async function checkScreeningId(req:Request, res: Response, next: NextFunction) {
   try {
-    const screening = await Screening.findById(req.body.screening_id)
+    const screeningId = (req.params.id) ? req.params.id : req.body.screening_id
+    const screening = await Screening.findById(screeningId)
 
     if (!screening) {
       res.status(403).send({ message: "Invalid Screening ID" });

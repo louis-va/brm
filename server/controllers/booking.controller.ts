@@ -13,7 +13,8 @@ async function addBooking(req: AuthenticatedRequest, res: Response) {
       seats: req.body.seats,
       qr_code: String,
       tickets: req.body.tickets,
-      snacks: req.body.snacks
+      snacks: req.body.snacks,
+      price: req.body.price
     });
 
     await booking.save();
