@@ -8,7 +8,7 @@ interface AuthPros {
   children?: React.ReactNode;
 }
 export const Auth = ({ className, children }: AuthPros) => {
-  const [showSignIn, setShowSignIn] = useState(false); // Afficher le formulaire d'inscription par défaut
+  const [showSignIn, setShowSignIn] = useState(false); 
   const [showLogIn, setShowLogIn] = useState(true);
 
   const handleSignInClick = () => {

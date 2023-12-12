@@ -15,6 +15,7 @@ export const Button = ({
   borderNone,
   children,
   className,
+  onClick,
 }: ButtonProps) => {
   let variantClasses;
 
@@ -45,6 +46,7 @@ export const Button = ({
 
   return (
     <button
+      onClick={onClick}
       type={type}
       className={`${className} ${variantClasses} ${borderClass}`}
     >
