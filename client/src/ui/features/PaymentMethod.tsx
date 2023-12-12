@@ -7,16 +7,21 @@ import {
   FaCcApplePay,
   FaCcPaypal,
   FaCcVisa,
+  FaCcMastercard,
 } from "react-icons/fa6";
 
 const paymentMethods: PaymentOption[] = [
   {
     id: "card",
     title: "Carte de crédit/débit",
-    icon: <FaCcVisa size={40} />,
+    icon: 
+      <div className="flex gap-3">
+        <FaCcMastercard size={40} />
+        <FaCcVisa size={40} />
+      </div>,
     paymentForm: (
       <form action="" className="flex flex-col gap-10 mt-5">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-5">
           <Input
             type="text"
             placeholder="John Doe"
