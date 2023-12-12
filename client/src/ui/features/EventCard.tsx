@@ -15,7 +15,7 @@ export const EventCard = ({
   children,
 }: EventCardProps) => {
   const defaultStyle =
-    "w-full h-full rounded-25 flex flex-col justify-between items-center p-30 gap-20";
+    "w-full h-full relative flex flex-col items-center p-30 gap-20 rounded-25";
 
   let eventCardStyle = defaultStyle;
   let eventTypeText = "";
@@ -36,7 +36,8 @@ export const EventCard = ({
 
   return (
     <div className={eventCardStyle}>
-      <div className="flex items-center justify-between w-full h-1/6">
+
+      <div className="w-full absolute flex items-center px-30 justify-between">
         <Typography
           fontSize="20"
           textColor="black"
@@ -50,7 +51,7 @@ export const EventCard = ({
         ></div>
       </div>
 
-      <div className="flex flex-col items-center  w-full h-5/6 gap-5">
+      <div className="w-full h-full flex flex-col items-center justify-center gap-5">
         <Tag bgColor={tagColor} rounded>
           {tagText}
         </Tag>
