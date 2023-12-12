@@ -11,18 +11,13 @@ import { EventCard } from "../ui/features/EventCard";
 import { Footer } from "../ui/features/Footer";
 import MovieCard from "../ui/features/movieCard";
 import { Auth } from "../ui/features/Auth";
-import { Accordion } from "../ui/features/Accordion";
-
+import PaymentComponent from "../ui/features/PaymentMethod";
 export default function DesignSystem() {
   return (
     <>
       <Header></Header>
       <div className="bg-blackPrimary w-full h-fit p-30 flex flex-col gap-50">
-
-        <Accordion title="card" />
-        <Accordion title="paypal" />
-        <Accordion title="amazon" />
-        <Accordion title="apple" />
+        <PaymentComponent></PaymentComponent>
 
         <div className="p-30 bg-orangePrimary rounded-25">
           <Typography
@@ -56,6 +51,7 @@ export default function DesignSystem() {
           <Typography fontSize="20" textColor="black" fontFamily="Franklin">
             Texte 2
           </Typography>
+          P
         </div>
 
         <div className="p-30 bg-orangePrimary rounded-25 flex gap-10">
