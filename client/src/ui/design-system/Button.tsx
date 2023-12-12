@@ -1,6 +1,6 @@
 interface ButtonProps {
   icon?: boolean;
-  type?: "button" | "submit" ;
+  type?: "button" | "submit";
   variant: "orange" | "black";
   fontColor?: "white" | "black" | "orange";
   borderNone?: boolean;
@@ -16,7 +16,6 @@ export const Button = ({
   children,
   className,
 }: ButtonProps) => {
-  
   let variantClasses;
 
   switch (variant) {

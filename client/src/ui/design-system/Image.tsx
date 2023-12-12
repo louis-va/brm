@@ -16,10 +16,6 @@ export default function Image({
     : "w-auto h-full";
 
   return (
-    <img
-      src={src}
-      alt={alt}
-      className={`${className} ${orientationClasses}`}
-    />
+    <img src={src} alt={alt} className={`${className} ${orientationClasses}`} />
   );
 }
