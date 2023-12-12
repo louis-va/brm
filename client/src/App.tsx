@@ -13,6 +13,7 @@ import Dashboard from "./pages/backoffice/Dashboard";
 import AdminScreening from "./pages/backoffice/AdminScreening";
 import Booking from "./pages/backoffice/Booking";
 import DesignSystem from "./pages/DesignSystem";
+import PageNotFound from "./pages/PageNotFound";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path="admin/" element={<Dashboard />} />
       <Route path="admin/screening" element={<AdminScreening />} />
       <Route path="admin/booking" element={<Booking />} />
+      <Route path="*" element={<PageNotFound />} />
     </Route>
   )
 );
