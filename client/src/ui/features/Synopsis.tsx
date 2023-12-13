@@ -11,12 +11,21 @@ interface SynopsisProps {
 }
 
 export default function Synopsis(data: SynopsisProps) {
+  // Formater la date
+  const formattedDate = data.date instanceof Date ? data.date : new Date(data.date);
+  const month = formattedDate.getMonth() + 1;
+  const year = formattedDate.getFullYear() % 100;
+  //Formater l'heure
+  const formattedTime = formattedDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+
+
   return (
     <>
       <div className="flex flex-col bg-whitePrimary p-30 rounded-40 w-full gap-5">
         <div className="flex gap-5 w-full">
-          <Tag bgColor="white">{/*date*/}</Tag>
-          <Tag bgColor="black">{/*date*/}</Tag>
+          <Tag bgColor="white">{month}/{year}</Tag>
+          <Tag bgColor="black">{formattedTime}</Tag>
         </div>
 
         <div className="leading-none">

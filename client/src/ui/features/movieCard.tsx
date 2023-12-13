@@ -91,9 +91,7 @@ export default function MovieCard({
               </Typography>
             </div>
             <div className="flex justify-between">
-              <Tag bgColor="black">
-                {month}/{year}
-              </Tag>
+              <Tag bgColor="black">{month}/{year}</Tag>
               <Tag bgColor={tagBgColor}>{formattedTime}</Tag>
             </div>
           </div>

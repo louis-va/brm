@@ -51,7 +51,7 @@ export default function Screening() {
           <FoodMenu />
         </div>
         <div className="w-1/4 bg-orangePrimary p-30 rounded-40 h-fit sticky top-36">
-          <ResaRecap title={screening.movie.title} date="" />
+          <ResaRecap title={screening.movie.title} date={screening.date} />
         </div>
       </div>
       <Footer />
