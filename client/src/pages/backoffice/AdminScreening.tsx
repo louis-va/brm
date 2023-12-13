@@ -17,6 +17,9 @@ export default function AdminScreening() {
                     <Card />
                     <Card />
                     <Card />
+                    <Card />
+                    <Card />
+                    <Card />
                 </section>
             </section>
 
