@@ -10,11 +10,11 @@ const ticketsMenu = {
       prix: 8,
     },
     {
-      titre: "Etudiant",
+      titre: "Enfant",
       prix: 3,
     },
     {
-      titre: "Sprite",
+      titre: "Etudiant",
       prix: 3,
     },
   ],

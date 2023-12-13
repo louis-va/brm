@@ -2,18 +2,12 @@ import { Button } from "../design-system/Button";
 import { Tag } from "../design-system/Tag";
 import { Typography } from "../design-system/Typography";
 
-const filmData = {
-  titre: "Call Me By Your Name",
-  producteur: "Luca Guadagnino",
-  acteurs: "Timothée Chalamet, Armie Hammer, Michael Stuhlbarg",
-  genre: ["Romance", "Drame"],
-  dateSceance: "27/12",
-  heureSceance: "21:15",
-  synopsis:
-    "Elio, 17 ans, fils d’un professeur d’université, musicien, sensible et cultivé, attend comme chaque année “l’invité de l’été”, un étudiant en provenance de New York qui doit venir pour travailler sur sa thèse. Celui-ci s’appelle Oliver, et sa beauté et sa désinvolture ne manquent pas de faire tourner bien des têtes. Elio aussi est subjugué : ils parlent de films, de livres, font de longues promenades, vont nager. Entre eux vont naître sans crier gare des désirs nouveaux, qu’ils vivront avec une grande intensité.",
-};
+interface FilmData {
+  title: string;
+  date: string;
+}
 
-export default function ResaRecap() {
+export default function ResaRecap(data: FilmData) {
   return (
     <div className="flex flex-col gap-20">
       <div>
@@ -24,11 +18,11 @@ export default function ResaRecap() {
           uppercase
           className="text-center"
         >
-          {filmData.titre}
+          {data.title}
         </Typography>
         <div className="flex justify-around">
-          <Tag bgColor="orange">{filmData.heureSceance}</Tag>
-          <Tag bgColor="black">{filmData.dateSceance}</Tag>
+          <Tag bgColor="orange">{}</Tag>
+          <Tag bgColor="black">{}</Tag>
         </div>
       </div>
       <Typography
