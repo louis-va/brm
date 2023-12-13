@@ -9,7 +9,7 @@ interface FooterProps {
 export const Footer = ({ className }: FooterProps) => {
   return (
     <>
-      <footer className={`${className} relative w-full h-fit p-30 flex flex-col gap-20 bg-orangePrimary z-50`}>
+      <footer className={`${className} relative w-full h-fit p-30 flex flex-col gap-20 bg-orangePrimary`}>
         <div className="flex flex-row">
           <div className="w-1/2 flex flex-row gap-10">
             <Typography
@@ -72,8 +72,8 @@ export const Footer = ({ className }: FooterProps) => {
           </Typography>
           <Input
             type="email"
-            placeholder="Email"
-            label="Email"
+            placeholder="johndoe@gmail.com"
+            label="Adresse mail"
             variant="orange"
           ></Input>
         </div>
@@ -83,9 +83,8 @@ export const Footer = ({ className }: FooterProps) => {
             fontSize="96"
             textColor="black"
             fontFamily="FranklinBold"
-            className="uppercase leading-[12px]"
+            className="uppercase leading-3"
             component="h1"
-            
           >
             Brussels Rooftop Movies
           </Typography>

@@ -1,4 +1,5 @@
 import FoodMenu from "../ui/features/FoodMenu";
+import { Footer } from "../ui/features/Footer";
 import { Header } from "../ui/features/Header";
 import ResaRecap from "../ui/features/ResaRecap";
 import Synopsis from "../ui/features/Synopsis";
@@ -53,6 +54,7 @@ export default function Screening() {
           <ResaRecap title={screening.movie.title} date="" />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
