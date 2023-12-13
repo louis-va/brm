@@ -4,10 +4,17 @@ import { Typography } from "../design-system/Typography";
 
 interface FilmData {
   title: string;
-  date: string;
+  date: string | Date;
 }
 
 export default function ResaRecap(data: FilmData) {
+  // Formater la date
+  const formattedDate = data.date instanceof Date ? data.date : new Date(data.date);
+  const month = formattedDate.getMonth() + 1;
+  const year = formattedDate.getFullYear() % 100;
+  //Formater l'heure
+  const formattedTime = formattedDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
   return (
     <div className="flex flex-col gap-20">
       <div>
@@ -21,8 +28,8 @@ export default function ResaRecap(data: FilmData) {
           {data.title}
         </Typography>
         <div className="flex justify-around">
-          <Tag bgColor="orange">{}</Tag>
-          <Tag bgColor="black">{}</Tag>
+          <Tag bgColor="orange">{month}/{year}</Tag>
+          <Tag bgColor="black">{formattedTime}</Tag>
         </div>
       </div>
       <Typography
