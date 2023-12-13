@@ -3,7 +3,7 @@ import CustomLink from "../design-system/CustomLink.tsx";
 
 interface HeadingSectionProps {
     title: string;
-    cta: string;
+    cta?: string;
     className?: string;
     children?: React.ReactNode;
 }
