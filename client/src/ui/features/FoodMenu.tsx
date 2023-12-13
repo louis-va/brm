@@ -5,14 +5,17 @@ const softMenu = {
   titre: "Soft",
   items: [
     {
+      id: 1,
       titre: "Coca-Cola",
       prix: 3,
     },
     {
+      id: 2,
       titre: "Limonade",
       prix: 3,
     },
     {
+      id: 3,
       titre: "Sprite",
       prix: 3,
     },
@@ -23,14 +26,17 @@ const alcoolMenu = {
   titre: "Alcool",
   items: [
     {
+      id: 1,
       titre: "Delta",
       prix: 4,
     },
     {
+      id: 2,
       titre: "Orval",
       prix: 5,
     },
     {
+      id: 3,
       titre: "Jupiler",
       prix: 3,
     },
@@ -41,14 +47,17 @@ const popcornMenu = {
   titre: "Popcorn",
   items: [
     {
+      id: 1,
       titre: "Salé",
       prix: 4,
     },
     {
+      id: 2,
       titre: "Sucré",
       prix: 4,
     },
     {
+      id: 3,
       titre: "Sucré/Salé",
       prix: 4,
     },
@@ -70,7 +79,7 @@ export default function FoodMenu() {
             {softMenu.titre}
           </Typography>
           {softMenu.items.map((item) => (
-            <MenuItem title={item.titre} price={item.prix} />
+            <MenuItem title={item.titre} price={item.prix} key={item.id} />
           ))}
         </div>
         <div>
@@ -84,7 +93,7 @@ export default function FoodMenu() {
             {alcoolMenu.titre}
           </Typography>
           {alcoolMenu.items.map((item) => (
-            <MenuItem title={item.titre} price={item.prix} />
+            <MenuItem title={item.titre} price={item.prix} key={item.id} />
           ))}
         </div>
       </div>
@@ -100,7 +109,7 @@ export default function FoodMenu() {
           {popcornMenu.titre}
         </Typography>
         {popcornMenu.items.map((item) => (
-          <MenuItem title={item.titre} price={item.prix} />
+          <MenuItem title={item.titre} price={item.prix} key={item.id} />
         ))}
       </div>
     </div>
