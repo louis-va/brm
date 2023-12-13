@@ -27,6 +27,17 @@ export default function MovieCard({
   let bgColorClasses;
   let tagBgColor = "";
 
+  // Formatage date
+  const formattedDate = new Date(movieData.date);
+  const month = formattedDate.getMonth() + 1;
+  const year = formattedDate.getFullYear() % 100;
+
+  // Formatage heure
+  const formattedTime = formattedDate.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   switch (bgColor) {
     case "orange":
       bgColorClasses = "bg-orangePrimary text-blackPrimary";
@@ -80,8 +91,10 @@ export default function MovieCard({
               </Typography>
             </div>
             <div className="flex justify-between">
-              <Tag bgColor="black">{}</Tag>
-              <Tag bgColor={tagBgColor}>{}</Tag>
+              <Tag bgColor="black">
+                {month}/{year}
+              </Tag>
+              <Tag bgColor={tagBgColor}>{formattedTime}</Tag>
             </div>
           </div>
         )}

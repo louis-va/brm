@@ -72,5 +72,4 @@ export const Nav = ({ className }: NavProps) => {
       </div>
     </nav>
   );
-
 };
