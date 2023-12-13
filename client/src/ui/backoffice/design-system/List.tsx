@@ -10,8 +10,8 @@ interface ListProps {
 const List = ({className, children}: ListProps) => {
     const values = {
         link1: {value: 'Dashboard', key: '/admin'},
-        link2: {value: 'Séances', key: '/screening'},
-        link3: {value: 'Réservations', key: '/booking'},
+        link2: {value: 'Séances', key: '/admin/screening'},
+        link3: {value: 'Réservations', key: '/admin/booking'},
     }
 
     return (
