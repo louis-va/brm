@@ -7,7 +7,7 @@ interface LayoutProps {
 
 export const LayoutBO = ({ children }: LayoutProps) => {
   return (
-    <div className="bg-blackPrimary w-full h-screen">
+    <div className="bg-blackPrimary w-full h-full">
       <HeaderBo></HeaderBo>
       <div className="flex">
         <aside className="w-2/12">
