@@ -15,7 +15,7 @@ const tickets = [
   },
   {
     title: "Monka",
-    date: "12/12",
+    date: "22/12",
     hour: "22:00",
     img: "https://www.themoviedb.org/t/p/w440_and_h660_face/aKK2C3SErXIhNdT9gI93as2b8GV.jpg",
   },
@@ -39,7 +39,7 @@ const tickets = [
   },
   {
     title: "Top Gun : Maverick",
-    date: "08/12",
+    date: "22/12",
     hour: "17:00",
     img: "https://www.themoviedb.org/t/p/w440_and_h660_face/kTh1s6I6yUyk2OGiRoGkDTYTS6K.jpg",
   },
