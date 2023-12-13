@@ -2,7 +2,6 @@ import { Header } from "../ui/features/Header";
 import { Footer } from "../ui/features/Footer";
 import MovieCard from "../ui/features/movieCard";
 import { EventCard } from "../ui/features/EventCard";
-
 import React from "react";
 
 export default function Home() {

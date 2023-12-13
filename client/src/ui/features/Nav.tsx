@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Logo } from "../design-system/Logo.tsx";
 import { Button } from "../design-system/Button.tsx";
 import { Typography } from "../design-system/Typography.tsx";
@@ -11,11 +11,31 @@ interface NavProps {
 }
 
 export const Nav = ({ className }: NavProps) => {
+  
   const [showPopup, setShowPopup] = useState(false);
+  const popupRef = useRef<HTMLDivElement>(null);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+      setShowPopup(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showPopup) {
+      document.addEventListener("click", handleClickOutside, true);
+    } else {
+      document.removeEventListener("click", handleClickOutside, true);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, [showPopup]);
 
   return (
     <nav
@@ -44,7 +64,7 @@ export const Nav = ({ className }: NavProps) => {
         </Button>
         {showPopup && (
           <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="w-1/2">
+            <div className="w-1/2" ref={popupRef}>
               <Auth />
             </div>
           </div>
@@ -52,4 +72,5 @@ export const Nav = ({ className }: NavProps) => {
       </div>
     </nav>
   );
+
 };
