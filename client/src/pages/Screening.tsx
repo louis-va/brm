@@ -20,6 +20,7 @@ export default function Screening() {
       synopsis: "",
       poster: "",
       backdrop: "",
+      trailer: "",
     },
     date: "",
     _id: "",
@@ -46,6 +47,7 @@ export default function Screening() {
           <Video
             backdrop={screening.movie.backdrop}
             title={screening.movie.title}
+            videoUrl={screening.movie.trailer}
           />
           <TicketsAndPlacement />
           <FoodMenu />

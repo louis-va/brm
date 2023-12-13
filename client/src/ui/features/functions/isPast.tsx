@@ -9,6 +9,7 @@ export function estAnterieure(dateStr: string, hourStr: string): boolean {
     parseInt(hour),
     parseInt(minute)
   );
+
   const currentDate = new Date();
 
   return ticketDate > currentDate;
