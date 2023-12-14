@@ -2,18 +2,39 @@ import { Button } from "../design-system/Button";
 import { Tag } from "../design-system/Tag";
 import { Typography } from "../design-system/Typography";
 
-interface FilmData {
+interface Movie {
   title: string;
-  date: string | Date;
+  poster: string;
 }
 
-export default function ResaRecap(data: FilmData) {
-  // Formater la date
-  const formattedDate = data.date instanceof Date ? data.date : new Date(data.date);
+interface Screening {
+  movie: Movie;
+  date: string;
+  _id: string;
+}
+
+interface ResaRecapProps {
+  title: string;
+  date: string | Date;
+  screeningData: Screening; // Utilisation du type Screening pour screeningData
+}
+
+export default function ResaRecap({
+  title,
+  date,
+  screeningData,
+}: ResaRecapProps) {
+  const formattedDate = date instanceof Date ? date : new Date(date);
   const month = formattedDate.getMonth() + 1;
   const year = formattedDate.getFullYear() % 100;
-  //Formater l'heure
-  const formattedTime = formattedDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const formattedTime = formattedDate.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  const handleReservation = () => {
+    window.location.href = `/payment/${screeningData._id}`;
+  };
 
   return (
     <div className="flex flex-col gap-20">
@@ -25,10 +46,12 @@ export default function ResaRecap(data: FilmData) {
           uppercase
           className="text-center"
         >
-          {data.title}
+          {title}
         </Typography>
         <div className="flex justify-around">
-          <Tag bgColor="orange">{month}/{year}</Tag>
+          <Tag bgColor="orange">
+            {month}/{year}
+          </Tag>
           <Tag bgColor="black">{formattedTime}</Tag>
         </div>
       </div>
@@ -40,7 +63,11 @@ export default function ResaRecap(data: FilmData) {
       >
         Veuillez sélectionner votre place assise avant d'effectuer le paiement
       </Typography>
-      <Button variant="black" className="flex justify-center">
+      <Button
+        variant="black"
+        className="flex justify-center"
+        onClick={handleReservation}
+      >
         <Typography fontSize="20" fontFamily="Franklin" textColor="orange">
           Réserver
         </Typography>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FoodMenu from "../ui/features/FoodMenu";
 import { Footer } from "../ui/features/Footer";
@@ -32,7 +32,7 @@ export default function Screening() {
       .then((response) => response.json())
       .then((result) => setScreening(result))
       .catch((error) => console.log("error", error));
-  }, []); 
+  }, []);
 
   return (
     <div className="bg-blackPrimary w-full h-full">
@@ -57,7 +57,11 @@ export default function Screening() {
           <FoodMenu />
         </div>
         <div className="w-1/4 bg-orangePrimary p-30 rounded-40 h-fit sticky top-36">
-          <ResaRecap title={screening.movie.title} date={screening.date} />
+          <ResaRecap
+            title={screening.movie.title}
+            date={screening.date}
+            screeningData={screening}
+          />
         </div>
       </div>
       <Footer />
