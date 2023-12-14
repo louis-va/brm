@@ -2,15 +2,17 @@ import { Header } from "../ui/features/Header";
 import { Footer } from "../ui/features/Footer";
 import MovieCard from "../ui/features/movieCard";
 import { EventCard } from "../ui/features/EventCard";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Home() {
-  const [screenings, setScreenings] = React.useState([]);
+  const [screenings, setScreenings] = useState([]);
 
-  fetch("https://api.brm.lou-va.com/screenings/", { method: "GET" })
-    .then((response) => response.json())
-    .then((result) => setScreenings(result))
-    .catch((error) => console.log("error", error));
+  useEffect(() => {
+    fetch("https://api.brm.lou-va.com/screenings/", { method: "GET" })
+      .then((response) => response.json())
+      .then((result) => setScreenings(result))
+      .catch((error) => console.log("error", error));
+  }, []); // Dépendance vide fait en sorte que useEffect s'exécute une seule fois au chargement initial du composant
 
   return (
     <div className="bg-blackPrimary w-full h-full">
@@ -25,8 +27,8 @@ export default function Home() {
                 <MovieCard bgColor={bgColor} movieData={film} />
               </div>
 
-              {/* Insérer l'EventCard après le quatrième film */}
-              {index === 3 && (
+              {/* Insère l'EventCard dans la liste de film*/}
+              {index === 5 && (
                 <div className="w-1/2 px-4">
                   <EventCard
                     eventType="promo"

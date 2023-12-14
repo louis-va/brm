@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import FoodMenu from "../ui/features/FoodMenu";
 import { Footer } from "../ui/features/Footer";
 import { Header } from "../ui/features/Header";
@@ -5,8 +7,6 @@ import ResaRecap from "../ui/features/ResaRecap";
 import Synopsis from "../ui/features/Synopsis";
 import TicketsAndPlacement from "../ui/features/TicketsAndPlacement";
 import Video from "../ui/features/Video";
-import React from "react";
-import { useParams } from "react-router-dom";
 
 export default function Screening() {
   const { id } = useParams<{ id: string }>();
@@ -26,10 +26,12 @@ export default function Screening() {
     _id: "",
   });
 
+  useEffect(() => {
   fetch(`https://api.brm.lou-va.com/screenings/${id}`, { method: "GET" })
     .then((response) => response.json())
     .then((result) => setScreening(result))
     .catch((error) => console.log("error", error));
+  }, []); 
 
   return (
     <div className="bg-blackPrimary w-full h-full">
