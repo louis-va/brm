@@ -1,4 +1,4 @@
-import { FaXmark } from "react-icons/fa6";
+// import { FaXmark } from "react-icons/fa6";
 import { MenuItem } from "../design-system/MenuItems";
 import { Typography } from "../design-system/Typography";
 
@@ -6,14 +6,17 @@ const ticketsMenu = {
   titre: "Tarifs & Réservations",
   items: [
     {
+      id: 1,
       titre: "Adulte",
       prix: 8,
     },
     {
+      id: 2,
       titre: "Enfant",
       prix: 3,
     },
     {
+      id: 3,
       titre: "Etudiant",
       prix: 3,
     },
@@ -23,7 +26,7 @@ const ticketsMenu = {
 export default function TicketsAndPlacement() {
   return (
     <div className="flex">
-      <div className="w-3/5 flex flex-col bg-whitePrimary p-30 rounded-40 gap-50 justify-between">
+      <div className="w-full flex flex-col bg-whitePrimary p-30 rounded-40 gap-50 justify-between">
         <div>
           <Typography
             fontSize="32"
@@ -35,7 +38,7 @@ export default function TicketsAndPlacement() {
             {ticketsMenu.titre}
           </Typography>
           {ticketsMenu.items.map((item) => (
-            <MenuItem title={item.titre} price={item.prix} />
+            <MenuItem title={item.titre} price={item.prix} key={item.id} />
           ))}
         </div>
         <div>
@@ -51,7 +54,7 @@ export default function TicketsAndPlacement() {
           <MenuItem title="5 Places" price={35} />
         </div>
       </div>
-      <div className="w-2/5 bg-whitePrimary p-30 rounded-40 flex flex-col justify-between">
+      {/* <div className="w-2/5 bg-whitePrimary p-30 rounded-40 flex flex-col justify-between">
         <Typography
           fontSize="32"
           fontFamily="FranklinBold"
@@ -61,9 +64,6 @@ export default function TicketsAndPlacement() {
         >
           Placement
         </Typography>
-
-        {/* TODO: Placement component, depend of what return backend for seat available or not */}
-        {/* https://chat.openai.com/share/3e3a6726-6901-4370-8c03-561e14899770 */}
 
         <div className="flex gap-5 justify-center">
           <div className="flex gap-2 items-center">
@@ -87,7 +87,7 @@ export default function TicketsAndPlacement() {
             </Typography>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

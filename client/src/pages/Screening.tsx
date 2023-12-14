@@ -37,6 +37,7 @@ export default function Screening() {
       <div className="w-full p-30 flex gap-30">
         <div className="flex flex-col gap-30 w-3/4">
           <Synopsis
+            key={screening._id}
             title={screening.movie.title}
             director={screening.movie.director}
             casting={screening.movie.casting}
