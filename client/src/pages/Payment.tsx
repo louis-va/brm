@@ -1,3 +1,5 @@
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Header } from "../ui/features/Header";
 import MovieCard from "../ui/features/movieCard";
 import { Auth } from "../ui/features/Auth";
@@ -6,6 +8,26 @@ import ResaRecap from "../ui/features/ResaRecap";
 import PaymentMethod from "../ui/features/PaymentMethod";
 
 export default function Payment() {
+  const { id } = useParams<{ id: string }>();
+
+  const [screening, setScreening] = React.useState({
+    movie: {
+      title: "",
+      director: [],
+      poster: "",
+    },
+    date: "",
+    _id: "",
+  });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    fetch(`https://api.brm.lou-va.com/screenings/${id}`, { method: "GET" })
+      .then((response) => response.json())
+      .then((result) => setScreening(result))
+      .catch((error) => console.log("error", error));
+  }, []);
+
   return (
     <div className="bg-blackPrimary w-full h-full">
       <Header />
@@ -18,20 +40,13 @@ export default function Payment() {
           </div>
         </div>
         <div className="flex flex-col gap-30 w-1/4 h-fit sticky top-36">
-          <MovieCard
-            bgColor="orange"
-            noText
-            movieData={{
-              title: "Call Me By Your Name",
-              director: "Luca Guadagnino",
-              dateShow: "27/12",
-              hourShow: "21:15",
-              imgUrl:
-                "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT4yhbrgOZqmfO7dIp2iO_uoP22H4G7tp2fa6M23zEKGKg7vymr",
-            }}
-          />
+          <MovieCard bgColor="orange" noText screeningData={screening} />
           <div className="bg-orangePrimary p-30 rounded-40 h-fit">
-            <ResaRecap />
+            <ResaRecap
+              title={screening.movie.title}
+              date={screening.date}
+              screeningData={screening}
+            />
           </div>
         </div>
       </div>

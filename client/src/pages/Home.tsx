@@ -25,7 +25,7 @@ export default function Home() {
           return (
             <React.Fragment key={index}>
               <div className="w-1/4 px-4">
-                <MovieCard bgColor={bgColor} movieData={film} />
+                <MovieCard bgColor={bgColor} screeningData={film} />
               </div>
 
               {/* Insère l'EventCard dans la liste de film*/}
