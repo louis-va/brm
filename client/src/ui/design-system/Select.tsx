@@ -7,6 +7,8 @@ interface SelectProps {
   label: string;
   className?: string;
   options: { value: string; label: string }[];
+  name: string; // Ajoutez la propriété name
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const Select = ({
@@ -14,6 +16,8 @@ export const Select = ({
   className,
   variant = "orange",
   options,
+  name,
+  onChange
 }: SelectProps) => {
   const renderOptions = options.map((option) => (
     <option key={option.value} value={option.value}>
@@ -47,11 +51,10 @@ export const Select = ({
       </label>
       <div className="relative">
         <select
+          name={name} 
+          onChange={onChange} 
           className={`py-[7px] px-[30px] rounded-full border appearance-none ${selectClasses} ${className}`}
         >
-          <option className="text-gray-400" value="">
-            Mr.
-          </option>
           {renderOptions}
         </select>
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
