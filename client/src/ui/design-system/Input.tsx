@@ -1,4 +1,5 @@
 import { Typography } from "./Typography";
+import { ChangeEvent } from "react";
 //import { useState } from "react";
 
 interface InputProps {
@@ -8,6 +9,8 @@ interface InputProps {
   placeholder: string;
   value?: string;
   className?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  name?: string; // Ajoutez la propriété name
 }
 
 export const Input = ({
@@ -17,7 +20,15 @@ export const Input = ({
   label,
   className,
   variant = "orange",
+  onChange,
+  name,
 }: InputProps) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e); // Appeler la fonction onChange si elle est définie
+    }
+  };
+
   switch (variant) {
     case "orange":
       return (
@@ -31,6 +42,8 @@ export const Input = ({
             type={type}
             placeholder={placeholder}
             value={value}
+            name={name} 
+            onChange={handleChange} // Utiliser handleChange pour écouter les changements
             className="py-[7px] px-[30px] rounded-full border border-blackPrimary text-blackPrimary bg-orangePrimary placeholder:text-blackPrimary placeholder:opacity-30 focus:outline-none focus:border-whitePrimary"
           />
         </div>
