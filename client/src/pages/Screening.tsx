@@ -27,10 +27,11 @@ export default function Screening() {
   });
 
   useEffect(() => {
-  fetch(`https://api.brm.lou-va.com/screenings/${id}`, { method: "GET" })
-    .then((response) => response.json())
-    .then((result) => setScreening(result))
-    .catch((error) => console.log("error", error));
+    window.scrollTo(0, 0);
+    fetch(`https://api.brm.lou-va.com/screenings/${id}`, { method: "GET" })
+      .then((response) => response.json())
+      .then((result) => setScreening(result))
+      .catch((error) => console.log("error", error));
   }, []); 
 
   return (

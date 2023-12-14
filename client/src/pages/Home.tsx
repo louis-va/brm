@@ -8,6 +8,7 @@ export default function Home() {
   const [screenings, setScreenings] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetch("https://api.brm.lou-va.com/screenings/", { method: "GET" })
       .then((response) => response.json())
       .then((result) => setScreenings(result))
