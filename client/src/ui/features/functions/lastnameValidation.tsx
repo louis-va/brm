@@ -1,23 +1,21 @@
 export function lastnameValidation(lastname: string) {
-  let errorValidation = "";
-
   function contientQueDesLettres(chaine: string) {
     return /^[a-zA-Z]+$/.test(chaine);
   }
 
   if (lastname === "") {
-    errorValidation = "Veuillez saisir votre nom";
-    return [false, errorValidation];
+    return { errorValidation: "*Veuillez saisir votre nom", isValid: false };
   } else {
     if (!contientQueDesLettres(lastname)) {
-      errorValidation = "Votre nom ne peut contenir que des lettres";
-      return [false, errorValidation];
+      return {
+        errorValidation: "*Votre nom ne peut contenir que des lettres",
+        isValid: false,
+      };
     } else {
       if (lastname.length >= 2) {
-        return true;
+        return { isValid: true };
       } else {
-        errorValidation = "Nom trop court";
-        return [false, errorValidation];
+        return { errorValidation: "*Nom trop court", isValid: false };
       }
     }
   }
