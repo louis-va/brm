@@ -22,7 +22,7 @@ export const Auth = ({ className, children }: AuthPros) => {
   };
 
   return (
-    <div className={`${className} bg-orangePrimary p-30 rounded-25`}>
+    <div className={`${className} bg-orangePrimary p-30 rounded-25 flex flex-col gap-5`}>
       <div className="flex justify-center">
         <button onClick={handleLogInClick} className={showLogIn ? "active" : ""}>
           <Typography

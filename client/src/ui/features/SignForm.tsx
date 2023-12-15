@@ -9,7 +9,7 @@ import { lastnameValidation } from "./functions/lastnameValidation";
 import { firstnameValidation } from "./functions/firstnameValidation";
 import { passwordValidation } from "./functions/passwordValidation";
 
-export default function LogForm() {
+export default function SignForm() {
   // États pour stocker les données du formulaire
   const [formData, setFormData] = useState({
     email: "",
@@ -18,7 +18,7 @@ export default function LogForm() {
     firstname: "",
     lastname: "",
     birthdate: "",
-    gender: {},
+    gender: "M",
   });
 
   // Fonction pour mettre à jour les données du formulaire
@@ -39,16 +39,22 @@ export default function LogForm() {
     });
   };
 
+  const [lastnameError, setLastnameError] = useState<any>(null);
+  const [firstnameError, setFirstnameError] = useState<any>(null);
+  const [passwordError, setPasswordError] = useState<any>(null);
+  const [passwordMatchError, setPasswordMatchError] = useState<any>(null);
+  const [emailError, setEmailError] = useState<any>(null);
+
   // Fonction pour envoyer les données du formulaire à l'API
   const handleSubmit = () => {
-    var myHeaders = new Headers();
+    const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append(
       "Cookie",
       "brm-session=eyJ0b2tlbiI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpwWkNJNklqWTFObVUwWVRNek5qYzBaR1psTW1ZM1lqVXdNamRsWVNJc0ltbGhkQ0k2TVRjd01qUTVNekE1TXl3aVpYaHdJam94TnpBeU5UYzVORGt6ZlEuVlR6MnFGNGxlMlVJV2ZrdW1tWFFmZ0JSR3F3ano2alI2VmVfV1VRV1hSOCJ9; brm-session.sig=8LWeDkPRWnzsg9qCoPbLum51tUo"
     );
 
-    var raw = JSON.stringify({
+    const raw = JSON.stringify({
       email: formData.email,
       password: formData.password,
       firstname: formData.firstname,
@@ -57,27 +63,52 @@ export default function LogForm() {
       gender: formData.gender,
     });
 
-    const lastnameValid = lastnameValidation(formData.lastname);
     const firstnameValid = firstnameValidation(formData.firstname);
+    const lastnameValid = lastnameValidation(formData.lastname);
     const passwordValid = passwordValidation(formData.password);
+    const passwordMatch = formData.password === formData.passwordValid;
+    const emailValid = formData.email === "";
 
-    if (lastnameValid === true) {
+    if (!lastnameValid.isValid) {
+      setLastnameError(lastnameValid.errorValidation);
     } else {
-      console.log(lastnameValid[1]);
+      setLastnameError(null);
     }
 
-    if (passwordValid === true) {
-      console.log("Tout est bon");
+    if (!passwordValid.isValid) {
+      setPasswordError(passwordValid.errorValidation);
     } else {
-      console.log(passwordValid[1]);
+      setPasswordError(null);
     }
 
-    if (firstnameValid === true) {
+    if (!firstnameValid.isValid) {
+      setFirstnameError(firstnameValid.errorValidation);
     } else {
-      console.log(firstnameValid[1]);
+      setFirstnameError(null);
     }
 
-    if (formData.password === formData.passwordValid) {
+    if (!passwordMatch) {
+      setPasswordMatchError("*Vos mots de passes ne correspondent pas");
+    } else {
+      setPasswordMatchError(null);
+    }
+
+    if (emailValid) {
+      setEmailError("*Veuillez entrer une adresse mail");
+    } else {
+      setEmailError(null);
+    }
+
+    const validationError: boolean =
+      !passwordValid.isValid ||
+      !firstnameValid.isValid ||
+      !lastnameValid.isValid ||
+      !passwordMatch ||
+      emailValid;
+
+    if (validationError) {
+      console.log("Il y a une ou plusieurs erreurs dans le formulaire");
+    } else {
       fetch("https://api.brm.lou-va.com/auth/signup", {
         method: "POST",
         headers: myHeaders,
@@ -85,6 +116,8 @@ export default function LogForm() {
         redirect: "follow",
       })
         .then((response) => {
+          console.log("raw", raw);
+          console.log("response", response);
           if (response.ok) {
             // Réinitialiser les données du formulaire après inscription réussie
             setFormData({
@@ -96,10 +129,11 @@ export default function LogForm() {
               birthdate: "",
               gender: "",
             });
+
             console.log("Inscription réussie");
           } else if (response.status === 400) {
             // Gérer le cas où l'email est déjà utilisé
-            console.log("Email déjà utilisé");
+            setEmailError("*Email déjà utilisé");
           } else if (response.status === 500) {
             // Gérer les autres erreurs
             console.log("Erreur du serveur");
@@ -109,8 +143,6 @@ export default function LogForm() {
         })
 
         .catch((error) => console.log("Big probleme", error));
-    } else {
-      console.log("Vos mot de passes sont différents");
     }
   };
 
@@ -124,6 +156,7 @@ export default function LogForm() {
               label="Genre"
               variant="orange"
               className="w-[100px]"
+              defaultValue="M"
               onChange={handleGenderChange}
               options={[
                 { value: "M", label: "Mr" },
@@ -131,6 +164,7 @@ export default function LogForm() {
                 { value: "X", label: "Autre" },
               ]}
             />
+
             <Input
               name="lastname"
               value={formData.lastname}
@@ -195,12 +229,55 @@ export default function LogForm() {
             variant="orange"
           />
         </div>
-
-        <Button variant="black" type="submit" className="self-end">
-          <Typography fontSize="20" fontFamily="Franklin" textColor="orange">
-            S'inscrire
-          </Typography>
-        </Button>
+        <div className="flex justify-between items-end pt-5">
+          <div className="flex flex-col">
+            <Typography
+              fontSize="12"
+              fontFamily="Franklin"
+              textColor="black"
+              className="leading-[16px]"
+            >
+              {lastnameError}
+            </Typography>
+            <Typography
+              fontSize="12"
+              fontFamily="Franklin"
+              textColor="black"
+              className="leading-[16px]"
+            >
+              {firstnameError}
+            </Typography>
+            <Typography
+              fontSize="12"
+              fontFamily="Franklin"
+              textColor="black"
+              className="leading-[16px]"
+            >
+              {passwordError}
+            </Typography>
+            <Typography
+              fontSize="12"
+              fontFamily="Franklin"
+              textColor="black"
+              className="leading-[16px]"
+            >
+              {passwordMatchError}
+            </Typography>
+            <Typography
+              fontSize="12"
+              fontFamily="Franklin"
+              textColor="black"
+              className="leading-[16px]"
+            >
+              {emailError}
+            </Typography>
+          </div>
+          <Button variant="black" type="submit" className="self-end">
+            <Typography fontSize="20" fontFamily="Franklin" textColor="orange">
+              S'inscrire
+            </Typography>
+          </Button>
+        </div>
       </Form>
     </>
   );

@@ -8,7 +8,9 @@ interface SelectProps {
   className?: string;
   options: { value: string; label: string }[];
   name: string; // Ajoutez la propriété name
+  defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  
 }
 
 export const Select = ({
@@ -17,7 +19,8 @@ export const Select = ({
   variant = "orange",
   options,
   name,
-  onChange
+  onChange,
+  defaultValue= "M"
 }: SelectProps) => {
   const renderOptions = options.map((option) => (
     <option key={option.value} value={option.value}>
@@ -51,14 +54,15 @@ export const Select = ({
       </label>
       <div className="relative">
         <select
-          name={name} 
-          onChange={onChange} 
+          defaultValue={defaultValue}
+          name={name}
+          onChange={onChange}
           className={`py-[7px] px-[30px] rounded-full border appearance-none ${selectClasses} ${className}`}
         >
           {renderOptions}
         </select>
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-        <FaAngleDown size="13px" />
+          <FaAngleDown size="13px" />
         </div>
       </div>
     </div>
