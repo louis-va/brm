@@ -10,6 +10,7 @@ import database from './models';
 import authRoutes from './routes/auth.routes'
 import screeningRoutes from './routes/screening.routes'
 import bookingRoutes from './routes/booking.routes'
+import userRoutes from './routes/user.routes'
 
 // ENV variables
 dotenv.config();
@@ -66,6 +67,7 @@ database.mongoose
 app.use('/auth', authRoutes);
 app.use('/screenings', screeningRoutes);
 app.use('/bookings', bookingRoutes);
+app.use('/users', userRoutes);
 
 // Set port, listen for requests
 app.listen(PORT, () => {
