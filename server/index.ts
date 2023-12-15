@@ -20,9 +20,9 @@ const COOKIE_SECRET = process.env.COOKIE_SECRET;
 // Initialise express
 const app: Express = express();
 
-// Allow requests from multiple origins
+/* Allow requests from multiple origins */
 const allowedOrigins = {
-  origin: ["http://localhost:3000"]
+  origin: ["http://localhost:3000", "http://192.168.0.248:3000", "http://192.168.100.230:3000"]
 };
 app.use(cors(allowedOrigins));
 
