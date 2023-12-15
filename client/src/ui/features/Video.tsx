@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Button } from "../design-system/Button";
+import { useModal } from "./functions/useModal";
 
 interface VideoProps {
   title: string;
@@ -8,15 +8,7 @@ interface VideoProps {
 }
 
 export default function Video(data: VideoProps) {
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = () => {
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  const { showModal, closeModal, openModal } = useModal();
 
   const displayPlayButton = data.videoUrl !== "";
 

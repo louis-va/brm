@@ -9,11 +9,8 @@ import {Header} from "../ui/features/Header";
 import {MenuItem} from "../ui/design-system/MenuItems";
 import {EventCard} from "../ui/features/EventCard";
 import {Footer} from "../ui/features/Footer";
-import MovieCard from "../ui/features/movieCard";
 import {Auth} from "../ui/features/Auth";
 import PaymentComponent from "../ui/features/PaymentMethod";
-import AuthPopup from "../ui/features/AuthPopup";
-import Dropdown from "../ui/design-system/Dropdown.tsx";
 
 export default function DesignSystem() {
     return (
@@ -21,7 +18,6 @@ export default function DesignSystem() {
             <Header></Header>
             <div className="bg-blackPrimary w-full h-fit p-30 flex flex-col gap-50">
                 <PaymentComponent></PaymentComponent>
-                <AuthPopup/>
                 
                 <div className="p-30 bg-orangePrimary rounded-25">
                     <Typography

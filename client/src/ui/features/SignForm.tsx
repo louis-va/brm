@@ -232,42 +232,42 @@ export default function SignForm() {
         <div className="flex justify-between items-end pt-5">
           <div className="flex flex-col">
             <Typography
-              fontSize="12"
+              fontSize="15"
               fontFamily="Franklin"
               textColor="black"
-              className="leading-[16px]"
+              className="leading-[19px]"
             >
               {lastnameError}
             </Typography>
             <Typography
-              fontSize="12"
+              fontSize="15"
               fontFamily="Franklin"
               textColor="black"
-              className="leading-[16px]"
+              className="leading-[19px]"
             >
               {firstnameError}
             </Typography>
             <Typography
-              fontSize="12"
+              fontSize="15"
               fontFamily="Franklin"
               textColor="black"
-              className="leading-[16px]"
+              className="leading-[19px]"
             >
               {passwordError}
             </Typography>
             <Typography
-              fontSize="12"
+              fontSize="15"
               fontFamily="Franklin"
               textColor="black"
-              className="leading-[16px]"
+              className="leading-[19px]"
             >
               {passwordMatchError}
             </Typography>
             <Typography
-              fontSize="12"
+              fontSize="15"
               fontFamily="Franklin"
               textColor="black"
-              className="leading-[16px]"
+              className="leading-[19px]"
             >
               {emailError}
             </Typography>

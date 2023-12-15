@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Typography } from "./Typography.tsx";
 import { RxCaretDown } from "react-icons/rx";
 
