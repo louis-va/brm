@@ -25,3 +25,24 @@
   font-style: normal;
   font-display: swap;
 }
+
+.custom-scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: #f37120 #2d3748;
+  border-radius: 8px;
+  padding-right: 3rem;
+
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #f37120;
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #2d3748;
+}
