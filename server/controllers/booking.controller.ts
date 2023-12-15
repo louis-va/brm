@@ -19,7 +19,7 @@ function addBooking(req: AuthenticatedRequest, res: Response) {
 
     booking.save()
       .then(booking => {
-        booking.qr_code = `https://api.qrserver.com/v1/create-qr-code/?data=${booking._id}&size=200x200&bgcolor=FC4B20`;
+        booking.qr_code = `https://api.qrserver.com/v1/create-qr-code/?data=${booking._id}&size=200x200&bgcolor=F4F4F4`;
         booking.save()
       })
       .then(async () => {

@@ -23,7 +23,7 @@ const app: Express = express();
 
 /* Allow requests from multiple origins */
 const allowedOrigins = {
-  origin: ["http://localhost:3000", "http://192.168.0.248:3000", "http://192.168.100.230:3000"]
+  origin: ["http://localhost:3000", "http://192.168.0.248:3000", "http://192.168.100.230:3000", "http://10.40.0.79:3000"]
 };
 app.use(cors(allowedOrigins));
 
