@@ -10,6 +10,7 @@ import database from './models';
 import authRoutes from './routes/auth.routes'
 import screeningRoutes from './routes/screening.routes'
 import bookingRoutes from './routes/booking.routes'
+import userRoutes from './routes/user.routes'
 
 // ENV variables
 dotenv.config();
@@ -20,9 +21,9 @@ const COOKIE_SECRET = process.env.COOKIE_SECRET;
 // Initialise express
 const app: Express = express();
 
-// Allow requests from multiple origins
+/* Allow requests from multiple origins */
 const allowedOrigins = {
-  origin: ["http://localhost:3000"]
+  origin: ["http://localhost:3000", "http://192.168.0.248:3000", "http://192.168.100.230:3000", "http://10.40.0.79:3000"]
 };
 app.use(cors(allowedOrigins));
 
@@ -66,6 +67,7 @@ database.mongoose
 app.use('/auth', authRoutes);
 app.use('/screenings', screeningRoutes);
 app.use('/bookings', bookingRoutes);
+app.use('/users', userRoutes);
 
 // Set port, listen for requests
 app.listen(PORT, () => {
