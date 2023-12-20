@@ -9,7 +9,7 @@ import { lastnameValidation } from "./functions/lastnameValidation";
 import { firstnameValidation } from "./functions/firstnameValidation";
 import { passwordValidation } from "./functions/passwordValidation";
 
-export default function SignForm() {
+const SignForm = ({ closeModal }: { closeModal: () => void }) => {
   // États pour stocker les données du formulaire
   const [formData, setFormData] = useState({
     email: "",
@@ -39,11 +39,13 @@ export default function SignForm() {
     });
   };
 
-  const [lastnameError, setLastnameError] = useState<any>(null);
-  const [firstnameError, setFirstnameError] = useState<any>(null);
-  const [passwordError, setPasswordError] = useState<any>(null);
-  const [passwordMatchError, setPasswordMatchError] = useState<any>(null);
-  const [emailError, setEmailError] = useState<any>(null);
+  const [lastnameError, setLastnameError] = useState<string | null>(null);
+  const [firstnameError, setFirstnameError] = useState<string | null>(null);
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [passwordMatchError, setPasswordMatchError] = useState<string | null>(
+    null
+  );
+  const [emailError, setEmailError] = useState<string | null>(null);
 
   // Fonction pour envoyer les données du formulaire à l'API
   const handleSubmit = () => {
@@ -70,21 +72,15 @@ export default function SignForm() {
     const emailValid = formData.email === "";
 
     if (!lastnameValid.isValid) {
-      setLastnameError(lastnameValid.errorValidation);
-    } else {
-      setLastnameError(null);
+      setLastnameError(lastnameValid.errorValidation ?? null);
     }
 
     if (!passwordValid.isValid) {
-      setPasswordError(passwordValid.errorValidation);
-    } else {
-      setPasswordError(null);
+      setPasswordError(passwordValid.errorValidation ?? null);
     }
 
     if (!firstnameValid.isValid) {
-      setFirstnameError(firstnameValid.errorValidation);
-    } else {
-      setFirstnameError(null);
+      setFirstnameError(firstnameValid.errorValidation ?? null);
     }
 
     if (!passwordMatch) {
@@ -116,8 +112,6 @@ export default function SignForm() {
         redirect: "follow",
       })
         .then((response) => {
-          console.log("raw", raw);
-          console.log("response", response);
           if (response.ok) {
             // Réinitialiser les données du formulaire après inscription réussie
             setFormData({
@@ -130,6 +124,7 @@ export default function SignForm() {
               gender: "",
             });
 
+            closeModal();
             console.log("Inscription réussie");
           } else if (response.status === 400) {
             // Gérer le cas où l'email est déjà utilisé
@@ -142,7 +137,7 @@ export default function SignForm() {
           }
         })
 
-        .catch((error) => console.log("Big probleme", error));
+        .catch((error) => console.log("ERREUR:", error));
     }
   };
 
@@ -281,4 +276,6 @@ export default function SignForm() {
       </Form>
     </>
   );
-}
+};
+
+export default SignForm;
