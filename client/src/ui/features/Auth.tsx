@@ -67,7 +67,7 @@ export const Auth = ({ className, children, closeModal }: AuthPros) => {
           </Typography>
         </button>
       </div>
-      {showSignIn && <SignForm />}
+      {showSignIn && <SignForm closeModal={closeModal} />}
       {showLogIn && <LogForm closeModal={closeModal} />}
       {children}
     </div>

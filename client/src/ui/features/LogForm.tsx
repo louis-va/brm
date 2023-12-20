@@ -42,14 +42,12 @@ const LogForm = ({ closeModal }: { closeModal: () => void }) => {
 
     fetch("https://api.brm.lou-va.com/auth/signin", requestOptions)
       .then((response) => {
-        console.log("status:", response.status);
         // Handle different status codes
         if (response.status === 200) {
           // Handle successful login, maybe store the token or user info
 
           closeModal();
           console.log("Login successful");
-          console.log(response.status); // Access user info
         } else if (response.status === 401) {
           setErrorMessage("*Mot de passe incorect");
         } else if (response.status === 404) {
@@ -59,9 +57,6 @@ const LogForm = ({ closeModal }: { closeModal: () => void }) => {
         }
 
         return response.json();
-      })
-      .then((result) => {
-        console.log("Resultttttt:", result); // Log de la réponse complète pour l'inspecter
       })
       .catch((error) => {
         console.error("Error:", error);
