@@ -6,9 +6,10 @@ import LogForm from "../features/LogForm";
 interface AuthPros {
   className?: string;
   children?: React.ReactNode;
+  closeModal: () => void;
 }
-export const Auth = ({ className, children }: AuthPros) => {
-  const [showSignIn, setShowSignIn] = useState(false); 
+export const Auth = ({ className, children, closeModal }: AuthPros) => {
+  const [showSignIn, setShowSignIn] = useState(false);
   const [showLogIn, setShowLogIn] = useState(true);
 
   const handleSignInClick = () => {
@@ -22,9 +23,14 @@ export const Auth = ({ className, children }: AuthPros) => {
   };
 
   return (
-    <div className={`${className} bg-orangePrimary p-30 rounded-25 flex flex-col gap-5`}>
+    <div
+      className={`${className} bg-orangePrimary p-30 rounded-25 flex flex-col gap-5`}
+    >
       <div className="flex justify-center">
-        <button onClick={handleLogInClick} className={showLogIn ? "active" : ""}>
+        <button
+          onClick={handleLogInClick}
+          className={showLogIn ? "active" : ""}
+        >
           <Typography
             fontSize="40"
             textColor="black"
@@ -33,7 +39,7 @@ export const Auth = ({ className, children }: AuthPros) => {
             uppercase
             underline={showLogIn}
           >
-            Se connecter 
+            Se connecter
           </Typography>
         </button>
         <Typography
@@ -45,7 +51,10 @@ export const Auth = ({ className, children }: AuthPros) => {
         >
           |
         </Typography>
-        <button onClick={handleSignInClick} className={showSignIn ? "active" : ""}>
+        <button
+          onClick={handleSignInClick}
+          className={showSignIn ? "active" : ""}
+        >
           <Typography
             fontSize="40"
             textColor="black"
@@ -58,8 +67,8 @@ export const Auth = ({ className, children }: AuthPros) => {
           </Typography>
         </button>
       </div>
-      {showSignIn && <SignForm />} 
-      {showLogIn && <LogForm />} 
+      {showSignIn && <SignForm />}
+      {showLogIn && <LogForm closeModal={closeModal} />}
       {children}
     </div>
   );

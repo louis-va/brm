@@ -4,7 +4,7 @@ import { Typography } from "../design-system/Typography";
 import { Input } from "../design-system/Input";
 import { Button } from "../design-system/Button";
 
-export const LogForm = () => {
+const LogForm = ({ closeModal }: { closeModal: () => void }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -18,9 +18,8 @@ export const LogForm = () => {
     });
   };
 
-  const [errorMessage, setErrorMessage] = useState<any>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
-  
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -48,7 +47,7 @@ export const LogForm = () => {
         if (response.status === 200) {
           // Handle successful login, maybe store the token or user info
 
-          closeModal()
+          closeModal();
           console.log("Login successful");
           console.log(response.status); // Access user info
         } else if (response.status === 401) {
@@ -111,4 +110,6 @@ export const LogForm = () => {
       </Form>
     </>
   );
-}
+};
+
+export default LogForm;
