@@ -7,8 +7,14 @@ interface AuthPros {
   className?: string;
   children?: React.ReactNode;
   closeModal: () => void;
+  handleLogin: () => void;
 }
-export const Auth = ({ className, children, closeModal }: AuthPros) => {
+export const Auth = ({
+  className,
+  children,
+  closeModal,
+  handleLogin,
+}: AuthPros) => {
   const [showSignIn, setShowSignIn] = useState(false);
   const [showLogIn, setShowLogIn] = useState(true);
 
@@ -68,7 +74,9 @@ export const Auth = ({ className, children, closeModal }: AuthPros) => {
         </button>
       </div>
       {showSignIn && <SignForm closeModal={closeModal} />}
-      {showLogIn && <LogForm closeModal={closeModal} />}
+      {showLogIn && (
+        <LogForm handleLogin={handleLogin} closeModal={closeModal} />
+      )}
       {children}
     </div>
   );

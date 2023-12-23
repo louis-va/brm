@@ -4,7 +4,13 @@ import { Typography } from "../design-system/Typography";
 import { Input } from "../design-system/Input";
 import { Button } from "../design-system/Button";
 
-const LogForm = ({ closeModal }: { closeModal: () => void }) => {
+const LogForm = ({
+  closeModal,
+  handleLogin,
+}: {
+  closeModal: () => void;
+  handleLogin: () => void;
+}) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -35,6 +41,7 @@ const LogForm = ({ closeModal }: { closeModal: () => void }) => {
 
     const requestOptions = {
       method: "POST",
+      credentials: "same-origin" as RequestCredentials,
       headers: myHeaders,
       body: raw,
       redirect: "follow" as RequestRedirect,
@@ -47,6 +54,7 @@ const LogForm = ({ closeModal }: { closeModal: () => void }) => {
           // Handle successful login, maybe store the token or user info
 
           closeModal();
+          handleLogin();
           console.log("Login successful");
         } else if (response.status === 401) {
           setErrorMessage("*Mot de passe incorect");
@@ -57,6 +65,9 @@ const LogForm = ({ closeModal }: { closeModal: () => void }) => {
         }
 
         return response.json();
+      })
+      .then((result) => {
+        console.log(result);
       })
       .catch((error) => {
         console.error("Error:", error);

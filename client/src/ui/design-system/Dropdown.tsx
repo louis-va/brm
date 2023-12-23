@@ -23,13 +23,10 @@ const Dropdown = ({
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    console.log("Dropdown component mounted");
     // Fetch options based on the label
     fetch(`https://api.brm.lou-va.com/screenings/${label.toLowerCase()}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("API Response:", data);
-
         // Format the date if formatDates is true
         const formattedOptions = data.map((option: string) => {
           if (formatDates) {
