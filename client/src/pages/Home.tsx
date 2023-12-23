@@ -1,9 +1,9 @@
-import { Header } from "../ui/features/Header";
-import { Footer } from "../ui/features/Footer";
 import MovieCard from "../ui/features/movieCard";
 import { EventCard } from "../ui/features/EventCard";
 import React, { useState, useEffect } from "react";
 import { IsLogged } from "../ui/features/functions/isLogged";
+import { Layout } from "../ui/design-system/Layout";
+
 
 export default function Home() {
   const [screenings, setScreenings] = useState([]);
@@ -18,8 +18,7 @@ export default function Home() {
   }, []); // Dépendance vide fait en sorte que useEffect s'exécute une seule fois au chargement initial du composant
 
   return (
-    <div className="bg-blackPrimary w-full h-full">
-      <Header />
+    <Layout>
       <div className="w-full p-30 flex flex-wrap gap-y-30">
         {screenings.map((film, index) => {
           const bgColor = index % 2 === 0 ? "orange" : "white"; // Alternance de couleurs pour les films
@@ -44,7 +43,6 @@ export default function Home() {
           );
         })}
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 }
