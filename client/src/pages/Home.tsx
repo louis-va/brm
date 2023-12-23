@@ -3,9 +3,11 @@ import { Footer } from "../ui/features/Footer";
 import MovieCard from "../ui/features/movieCard";
 import { EventCard } from "../ui/features/EventCard";
 import React, { useState, useEffect } from "react";
+import { IsLogged } from "../ui/features/functions/isLogged";
 
 export default function Home() {
   const [screenings, setScreenings] = useState([]);
+  IsLogged();
 
   useEffect(() => {
     window.scrollTo(0, 0);
