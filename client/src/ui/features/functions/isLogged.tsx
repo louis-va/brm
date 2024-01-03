@@ -11,11 +11,14 @@ export const IsLogged = () => {
     setIsLoggedIn(false);
   };
 
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+
   useEffect(() => {
     const requestOptions = {
       method: "POST",
-      credentials: "same-origin" as RequestCredentials,
-      headers: { "Content-Type": "application/json" },
+      credentials: "include" as RequestCredentials,
+      headers: headers,
       redirect: "follow" as RequestRedirect,
     };
 
@@ -39,7 +42,7 @@ export const IsLogged = () => {
         console.log(result);
       })
       .catch((error) => console.log("error", error));
-  }, []);
+  });
 
   return {
     isLoggedIn,

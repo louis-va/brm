@@ -1,13 +1,10 @@
 import MovieCard from "../ui/features/movieCard";
 import { EventCard } from "../ui/features/EventCard";
 import React, { useState, useEffect } from "react";
-import { IsLogged } from "../ui/features/functions/isLogged";
 import { Layout } from "../ui/design-system/Layout";
-
 
 export default function Home() {
   const [screenings, setScreenings] = useState([]);
-  IsLogged();
 
   useEffect(() => {
     window.scrollTo(0, 0);

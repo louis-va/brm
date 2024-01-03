@@ -41,7 +41,7 @@ const LogForm = ({
 
     const requestOptions = {
       method: "POST",
-      credentials: "same-origin" as RequestCredentials,
+      credentials: "include" as RequestCredentials,
       headers: myHeaders,
       body: raw,
       redirect: "follow" as RequestRedirect,
@@ -115,7 +115,10 @@ const LogForm = ({
         </div>
       </Form>
     </>
+    formData.email,
+    formData.password,
   );
+ 
 };
 
 export default LogForm;

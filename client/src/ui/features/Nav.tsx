@@ -12,6 +12,8 @@ interface NavProps {
   className?: string;
 }
 
+IsLogged();
+
 export const Nav = ({ className }: NavProps) => {
   const [setSelectedGenre] = useState("");
   const [setSelectedDate] = useState("");
