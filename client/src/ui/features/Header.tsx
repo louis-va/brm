@@ -1,5 +1,4 @@
 import { Typography } from "../design-system/Typography.tsx";
-import { Nav } from "./Nav.tsx";
 
 interface HeaderProps {
   className?: string;
@@ -43,7 +42,6 @@ export const Header = ({ className }: HeaderProps) => {
           </Typography>
         </div>
       </header>
-      <Nav></Nav>
     </>
   );
 };
