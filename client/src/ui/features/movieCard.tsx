@@ -29,11 +29,10 @@ export default function MovieCard({
   let bgColorClasses;
   let tagBgColor = "";
 
-  // Formatage date
+// Formatage date
   const formattedDate = new Date(screeningData.date);
   const month = formattedDate.getMonth() + 1;
-  const year = formattedDate.getFullYear() % 100;
-
+  const dayOfMonth = formattedDate.getDate();
   // Formatage heure
   const formattedTime = formattedDate.toLocaleTimeString([], {
     hour: "2-digit",
@@ -94,7 +93,7 @@ export default function MovieCard({
             </div>
             <div className="flex justify-between">
               <Tag bgColor="black">
-                {month}/{year}
+                {dayOfMonth}/{month}
               </Tag>
               <Tag bgColor={tagBgColor}>{formattedTime}</Tag>
             </div>
