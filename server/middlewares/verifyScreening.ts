@@ -36,6 +36,7 @@ async function checkScreeningId(req:Request, res: Response, next: NextFunction) 
   } catch(err: any) {
     if (err.name === "CastError") {
       res.status(404).json({ error: 'Invalid Screening ID' });
+      return;
     }
     res.status(500).send({ message: err.message || "Some error occurred while checking admin role." });
   }

@@ -118,6 +118,7 @@ const Dropdown = ({
     
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
+
     };
     
     const handleSelect = (option: {
